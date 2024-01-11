@@ -1,0 +1,58 @@
+<mat-toolbar class="toolbar">
+    <button mat-button routerLink="" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30px;">MAXI VIP LIU</button>
+    <span class="example-spacer"></span>
+ 
+     <section>
+       <div class="example-button-row">
+         <button mat-button routerLink="home">ABOUT US |</button>
+         <button mat-button>CONTATTI |</button>
+         <button mat-button>ORARIO |</button>
+         <a mat-button href="https://www.google.it/maps/place/Vip+Liu+SRL/@42.9637336,12.6864071,17z/data=!3m2!4b1!5s0x132e85b6dbcf7c35:0x3a851046d2c5ad5a!4m6!3m5!1s0x132e85fa87d2a5b1:0xf09de1846c80cb64!8m2!3d42.9637336!4d12.688982!16s%2Fg%2F11h_1z23zr?entry=ttu" target="_blank">DOVE SIAMO</a>
+       </div>
+     </section>
+ 
+     <button mat-icon-button class="example-icon search" aria-label="Example icon-button with search icon">
+       <mat-icon>search</mat-icon>
+     </button>
+     <button mat-icon-button class="example-icon shopping" aria-label="Example icon-button with shopping icon">
+       <mat-icon>shopping_cart_checkout</mat-icon>
+     </button>
+     <button mat-icon-button class="example-icon person-icon" aria-label="Example icon-button with person icon" [matMenuTriggerFor]="persona">
+       <mat-menu #persona="matMenu">
+         <button mat-menu-item routerLink="registrazione"><mat-icon>how_to_reg</mat-icon>Registrati</button>
+         <button mat-menu-item routerLink="login"><mat-icon>login</mat-icon>Login</button>
+         <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
+         <button mat-menu-item routerLink="impostazioni"><mat-icon>settings</mat-icon>Impostazioni</button>
+
+     </mat-menu>
+         <mat-icon>person</mat-icon>
+     </button>
+ </mat-toolbar>
+ 
+
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <mat-list role="list">
+            <br>
+            <mat-list-item class="h2" role="listitem" routerLink="abbDonna">ABBIGLIAMENTO DONNA</mat-list-item>
+            <br>
+            <mat-list-item class="h2" role="listitem" routerLink="abbUomo">ABBIGLIAMENTO UOMO</mat-list-item>
+            <button mat-menu-item *ngIf="isAdmin==true" routerLink="admin" style="margin-top: 400px;">
+              <mat-icon>admin_panel_settings</mat-icon><label>ADMIN</label></button>
+
+
+        </mat-list>
+
+
+    
+    
+    </mat-drawer>
+        
+    <mat-drawer-content>
+
+      <router-outlet></router-outlet>
+
+    </mat-drawer-content>
+</mat-drawer-container>
+  
+

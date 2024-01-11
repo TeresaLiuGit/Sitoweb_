@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+
+.menu a {
+  background-color: #e5e5e5;
+  padding: 8px;
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  color: black;
+}
+
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+}
+
+.right {
+  background-color: #e5e5e5;
+  float: left;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;color:black;">
+
+<div style="background: linear-gradient(237deg, #134ab0, #3066bc, #4083c8, #4ca1d3);padding:15px;text-align:center;">
+     <button mat-icon-button class="example-icon search" aria-label="Example icon-button with search icon">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon shopping" aria-label="Example icon-button with shopping icon">
+        <mat-icon>shopping_cart_checkout</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon person-icon" aria-label="Example icon-button with person icon" [matMenuTriggerFor]="persona">
+        <mat-menu #persona="matMenu">
+          <button mat-menu-item routerLink="registrazione"><mat-icon>how_to_reg</mat-icon>Registrati</button>
+          <button mat-menu-item routerLink="login"><mat-icon>login</mat-icon>Login</button>
+          <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
+          <button mat-menu-item routerLink="impostazioni"><mat-icon>settings</mat-icon>Impostazioni</button>
+ 
+      </mat-menu>
+          <mat-icon>person</mat-icon>
+      </button>
+
+ 
+  <h1>MAXI VIP LIU</h1>
+
+<section>
+    <div class="example-button-row">
+      <button mat-button>CONTATTI |</button>
+      <button mat-button>ORARIO   |</button>
+      <a mat-button href="https://www.google.it/maps/place/Vip+Liu+SRL/@42.9637336,12.6864071,17z/data=!3m2!4b1!5s0x132e85b6dbcf7c35:0x3a851046d2c5ad5a!4m6!3m5!1s0x132e85fa87d2a5b1:0xf09de1846c80cb64!8m2!3d42.9637336!4d12.688982!16s%2Fg%2F11h_1z23zr?entry=ttu" target="_blank">DOVE SIAMO</a>
+    </div>
+</section>
+</div>
+
+
+<div style="overflow:auto">
+  <div class="menu">
+    <button mat-menu-item> [routerLink]="/abbDonna" routerLinkActive="router-link-active" >ABBIGLIAMENTO DONNA</button>
+    <button mat-menu-item> [routerLink]="/abbUomo" routerLinkActive="router-link-active" >ABBIGLIAMENTO UOMO</button>    
+    <a href="#">FERRAMENTA</a>
+    <a href="#">DETERSIVI/BAGNO</a>
+  </div>
+
+  <div class="main">
+    <h2>Tessera Fedeltà</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+  </div>
+
+  <div class="right">
+    <h2>About Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+  </div>
+</div>
+
+<div style="background: linear-gradient(237deg, #134ab0, #3066bc, #4083c8, #4ca1d3);text-align:center;padding:10px;margin-top:7px;">© copyright w3schools.com</div>
+
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+<body>
+    <div class="main">    
+    <input type="checkbox" id="chk" aria-hidden="true">
+    <div class="signUp">
+    <label>Registrazione</label>
+    
+    <form #registrazioneform="ngForm" (ngSubmit)="onSubmit(registrazioneform)">
+    
+        <input type="email" name="email" placeholder="Email" autocomplete="off" value="submit"  ngModel required>
+      <input type="password" name="password" placeholder="Password" autocomplete="off" value="submit"  ngModel required>
+      <br>
+      <a routerLink="/login" style="margin-left: 80px; text-align: center; color: #fff;">Hai già un account? Accedi</a>
+      <button type="submit"  [disabled]="!registrazioneform.valid">INVIA</button>
+      <button type="button" routerLink="">HOME</button>
+    
+    
+    </form>
+    </div>
+    
+    <div *ngIf="inserito==true">
+      <p class="registration-message">
+        Registrazione effettuata
+      </p>
+    </div>
+    </div>
+</body>

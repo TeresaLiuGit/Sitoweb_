@@ -1,0 +1,25 @@
+<body>
+    <div class="main">    
+    <input type="checkbox" id="chk" aria-hidden="true">
+    <div class="signUp">
+    <label>Login</label>
+    
+    <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+    
+      <input type="email" name="email" placeholder="Email" autocomplete="off" value="submit"  ngModel required>
+      <input type="password" name="password" placeholder="Password" autocomplete="off" value="submit"  ngModel required>
+      <br>
+      <button type="submit"  [disabled]="!loginform.valid">ACCEDI</button>
+      <button type="button" routerLink="">HOME</button>
+    
+    
+    </form>
+    </div>
+    <div *ngIf="isLogged==true">
+      <p class="login-message">
+        Login effettuato
+      </p>
+    </div>
+  
+  
+  
