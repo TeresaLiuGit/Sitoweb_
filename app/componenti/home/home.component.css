@@ -1,30 +1,5 @@
-.example-container {
-    width: 1250px;
-    height: 600px;
-    margin: 0px;
-  }
-  
   .example-spacer {
     flex: 1 1 auto;
   }
   
-  .toolbar{
-    background: linear-gradient(237deg, #134ab0, #3066bc, #4083c8, #4ca1d3);
-  }
-  
-  label{
-    color: black;
-    font-size: 20px;
-    display: flex;
-    font-weight:normal;
-    cursor: pointer;
-  }
 
-  .h2{
-    color: black;
-    font-size: 15px;
-    display: flex;
-    font-weight:light;
-    cursor: pointer;
-
-  }

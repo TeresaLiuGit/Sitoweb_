@@ -1,55 +1,62 @@
-<button mat-stroked-button>UTENTI</button>
-<button mat-stroked-button [matMenuTriggerFor]="merce">MERCE
-    <mat-menu #merce="matMenu">
-        <button mat-menu-item>Abbigliamento Donna</button>
-        <button mat-menu-item>Abbigliamento Uomo</button>
-        <button mat-menu-item>Intimo</button>
-        <button mat-menu-item>Detersivi/Bagno</button>
-        <button mat-menu-item>Ferramenta</button>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.main {
+  float: left;
+  width: 60%;
+  margin-top: 7px;
+  padding: 0  20px;
+}
 
-    </mat-menu>
-</button>
-<button mat-stroked-button>FATTURE</button>
-<br>
-<div id="demo-button-container">
-    <button mat-raised-button (click)="addData()" class="demo-button">
-      Add data
-    </button>
-    <button
-        mat-raised-button
-        [disabled]="!dataSource.length"
-        (click)="removeData()"
-        class="demo-button">
-      Remove data
-    </button>
-  </div>
-  
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let element">{{element.position}}</td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element">{{element.name}}</td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef>Weight</th>
-      <td mat-cell *matCellDef="let element">{{element.weight}}</td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef>Symbol</th>
-      <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
+.right {
+  background-color: #e5e5e5;
+  float: left;
+  width: 30%;
+  padding: 0 15px;
+  margin-top: 7px;
+  margin-left: 50px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;color:black;">
+    
+<div style="background: linear-gradient(237deg, #134ab0, #3066bc, #4083c8, #4ca1d3);padding:15px;text-align:center;">
+
+  <button mat-button routerLink="" style="font-size:xx-large;color: #fff;">
+    <img src="\assets\foto\logo1.jpg" style="width:40px; height:40px; margin-right:0;">
+    MAXI VIP LIU
+  </button>
+
+</div>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <mat-list role="list">
+      <mat-list-item class="h2" role="listitem" routerLink=""><mat-icon>home</mat-icon>HOME</mat-list-item>
+      <br>
+      <mat-list-item class="h2" role="listitem" routerLink="utenti"><mat-icon>person</mat-icon>UTENTI</mat-list-item>
+      <br>
+      <mat-list-item class="h2" role="listitem" routerLink="merce"><mat-icon>inventory_2</mat-icon>MERCE</mat-list-item>
+      <br>
+      <mat-list-item class="h2" role="listitem" routerLink="fatture"><mat-icon>receipt_long</mat-icon>FATTURE</mat-list-item>
+
+    </mat-list>
+
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+

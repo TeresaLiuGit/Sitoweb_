@@ -31,6 +31,10 @@ import { AbbDonnaComponent } from './componenti/abb-donna/abb-donna.component';
 import { AbbUomoComponent } from './componenti/abb-uomo/abb-uomo.component';
 import { NotFoundComponent } from './componenti/not-found/not-found.component';
 import { AdminComponent } from './componenti/admin/admin.component';
+import { HomepageComponent } from './componenti/homepage/homepage.component';
+import { UtentiComponent } from './admin/utenti/utenti.component';
+import { MerceComponent } from './admin/merce/merce.component';
+import { FattureComponent } from './admin/fatture/fatture.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { AdminComponent } from './componenti/admin/admin.component';
     AbbUomoComponent,
     NotFoundComponent,
     AdminComponent,
+    HomepageComponent,
+    UtentiComponent,
+    MerceComponent,
+    FattureComponent,
   ],
   imports: [
     BrowserModule,
