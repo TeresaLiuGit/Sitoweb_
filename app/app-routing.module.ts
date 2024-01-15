@@ -11,6 +11,9 @@ import { HomepageComponent } from './componenti/homepage/homepage.component';
 import { UtentiComponent } from './admin/utenti/utenti.component';
 import { MerceComponent } from './admin/merce/merce.component';
 import { FattureComponent } from './admin/fatture/fatture.component';
+import { CarrelloComponent } from './componenti/carrello/carrello.component';
+import { authGuard } from './auth/auth.guard';
+import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent, children:[
@@ -24,8 +27,14 @@ const routes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"abbDonna", component: AbbDonnaComponent},
   {path:"abbUomo", component: AbbUomoComponent},
-  
-  {path:"admin", component: AdminComponent, children:[
+
+
+  {path:"carrello", component: CarrelloComponent, canActivate:[authGuard], children:[
+    {path:"pagamento", component: PagamentoComponent},
+  ]},
+  //Gli utenti possono accedere al carrello e al pagamento solo se autenticati
+
+  {path:"admin", component: AdminComponent, canActivateChild:[authGuard], children:[
     {path:"utenti", component: UtentiComponent},
     {path:"merce", component: MerceComponent},
     {path:"fatture", component: FattureComponent},

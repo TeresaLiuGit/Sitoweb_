@@ -1,24 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
+import { DatabaseService } from 'src/app/servizi/database.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+@Injectable({
+  providedIn: 'root'
+})
+
 export class LoginComponent {
-  isLogged:boolean | undefined
-  constructor(private authservice: AuthService){}
+  constructor(private authservice: AuthService, private database:DatabaseService){}
+  isAuthenticated: boolean | any
 
   ngOnInit(): void{
+
+
 
   }
 
   onSubmit(form: NgForm){
     const email= form.value.email
     const password= form.value.password
-    this.isLogged=true
 
     console.log(email, password)
     this.authservice.signIn({email: email, password: password, returnSecureToken: true}).subscribe((data:any)=>{
@@ -31,9 +37,18 @@ export class LoginComponent {
     
         localStorage.setItem('user', JSON.stringify(this.authservice.user))
         console.log(this.authservice.user)
+
+        this.database.insertUtente({email:email}).subscribe(data=>{
+          console.log(data)
+        })
+
+        //{email: this.authservice.user.email, id:this.authservice.user.id }
       })
-    
-    
+
+
+
+      this.isAuthenticated=true
+      
  
   }
 

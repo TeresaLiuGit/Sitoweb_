@@ -35,6 +35,8 @@ import { HomepageComponent } from './componenti/homepage/homepage.component';
 import { UtentiComponent } from './admin/utenti/utenti.component';
 import { MerceComponent } from './admin/merce/merce.component';
 import { FattureComponent } from './admin/fatture/fatture.component';
+import { CarrelloComponent } from './componenti/carrello/carrello.component';
+import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { FattureComponent } from './admin/fatture/fatture.component';
     UtentiComponent,
     MerceComponent,
     FattureComponent,
+    CarrelloComponent,
+    PagamentoComponent,
   ],
   imports: [
     BrowserModule,

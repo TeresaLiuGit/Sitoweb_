@@ -6,7 +6,7 @@ body{
     align-items: center;
     min-height: 100vh;
     font-family: 'Jost', sans-serif;
-    background: linear-gradient(237deg, #134ab0, #3066bc, #4083c8, #4ca1d3);
+    background: linear-gradient(237deg, #005ce6,#ff0000);
   }
   
   .main{
@@ -66,7 +66,7 @@ body{
       justify-content: center;
       display: block;
       color: #fff;
-      background: #134AB0;
+      background:  #732673;
       font-size: 1em;
       font-weight: bold;
       margin-top: 20px;

@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HomepageComponent {
   constructor(private authService: AuthService){}
 
-  isLoggedIn= this.authService.isLoggedIn;
   isAdmin= this.authService.isAdmin
 
 

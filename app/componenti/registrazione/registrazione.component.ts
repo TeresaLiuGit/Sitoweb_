@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
+import { DatabaseService } from 'src/app/servizi/database.service';
 
 @Component({
   selector: 'app-registrazione',
@@ -22,10 +23,11 @@ export class RegistrazioneComponent implements OnInit{
     const password= form.value.password
     this.inserito=true
 
-    console.log(email, password)
     this.authservice.signUp({email: email, password: password, returnSecureToken: true}).subscribe(data=>{
       console.log(data)
     })
+
  
+
   }
 }

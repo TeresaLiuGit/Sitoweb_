@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn= false //è presente anche nel login
   isAdmin= true
   urlLogin='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBiliEhIkv-rMt2e9I7v135lMTViBjkNyQ'
   urlRegistrazione='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBiliEhIkv-rMt2e9I7v135lMTViBjkNyQ'
@@ -26,11 +25,7 @@ export class AuthService {
   
   creaUtente(email:string, id:string, token:string, expirationDate:Date){
     this.user= new User(email, id, token, expirationDate )
-    this.isLoggedIn= true
 
-  }
-  isAuthenticated(){
-    return this.isLoggedIn
   }
 
   isRoleAdmin(){
@@ -43,7 +38,6 @@ export class AuthService {
 
 
   logout(){
-    this.isLoggedIn=false
     this.user=null
     localStorage.removeItem('user')
     this.router.navigate(['/login'])

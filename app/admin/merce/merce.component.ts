@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { DatabaseService } from 'src/app/servizi/database.service';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -23,9 +24,38 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './merce.component.html',
   styleUrls: ['./merce.component.css']
 })
+
+
+
 export class MerceComponent {
+
+  nome:string | undefined 
+  descrizione:string | any
+  costo:number | any
+
+  constructor(private database:DatabaseService){}
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = [...ELEMENT_DATA];
+
+
 
   @ViewChild(MatTable) table: MatTable<PeriodicElement> | any;
 
@@ -33,6 +63,14 @@ export class MerceComponent {
     const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
     this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
     this.table.renderRows();
+
+
+    //this.database.insertMerce('https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/utente.json',
+    //{this.nome, this.descrizione, this.costo}).subscribe((data)=>{
+      //console.log(data)
+    //})
+  
+  
   }
 
   removeData() {

@@ -8,4 +8,5 @@ import { MatTable } from '@angular/material/table';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+  // #134ab0, #3066bc, #4083c8, #4ca1d3
 }
