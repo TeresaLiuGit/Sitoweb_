@@ -22,7 +22,7 @@ body{
   display: none;
 }
 
-.registration-message {
+.login-message {
     color: white; /* White text color */
     padding: 15px; /* Add some padding for better visibility */
     text-align: center; /* Center the text */

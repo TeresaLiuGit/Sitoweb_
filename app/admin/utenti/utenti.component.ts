@@ -13,25 +13,18 @@ export class UtentiComponent implements OnInit {
   constructor(private database:DatabaseService){}
 
 
-  ngOnInit(){
-
-    this.database.getUtente().subscribe((data:any)=>{
-      this.utente= Object.keys(data).map((key) => {return data[key]})
+  ngOnInit():void{
+    this.database.getUtente()
+    .subscribe(data=>{
+      this.utente=data
       console.log(this.utente)
-      this.id=this.utente.key
-      console.log("id", this.id)
     })
   
   }
-    onGetUtenti(){
-      this.database.getUtente().subscribe((data:any)=>{
-        this.utente= Object.keys(data).map((key) => {return data[key]})
-        console.log(this.utente)
-        this.id=this.utente.key
-        console.log("id", this.id)
-      })
-  
-    }
+
+
+  onGetUtenti(){
+  }
 
     onDeleteUtente(){
     this.database.deleteUtente(this.id).subscribe((data: any)=>{

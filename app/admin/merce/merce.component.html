@@ -1,43 +1,80 @@
-<div id="demo-button-container">
-    <button mat-raised-button (click)="addData()" class="demo-button">
-      Add data
-    </button>
-    <button
-        mat-raised-button
-        [disabled]="!dataSource.length"
-        (click)="removeData()"
-        class="demo-button">
-      Remove data
-    </button>
-  </div>
-  
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let element">{{element.position}}</td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element">{{element.name}}</td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef>Weight</th>
-      <td mat-cell *matCellDef="let element">{{element.weight}}</td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef>Symbol</th>
-      <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
+<html>
+<style>
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
 
+input[type=text], select {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+input[type=number], select {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+</style>
+<body>
+
+
+<div>
+
+  <h2>Inserimento Merce</h2>
+
+  <form #inserimentoMerce="ngForm" (ngSubmit)="onSubmit(inserimentoMerce)">
+
+    <label>ID</label>
+    <input type="text" name="id" id="id" value="submit" ngModel required>
+
+    <br>
+    <br>
+    <label>DESCRIZIONE</label>
+    <textarea type="text" name="descrizione" id="descrizione" value="submit" ngModel required></textarea>
+
+    <label>COSTO</label>
+    <mat-form-field floatLabel="always">
+      <input matInput type="number" name="costo" id="costo" value="submit" placeholder="0" ngModel required>
+      <span matTextPrefix>€&nbsp;</span>
+    </mat-form-field>
+
+    <br>
+
+    <button mat-raised-button type="submit" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(inserimentoMerce)">ABB DONNA</button>
+    
+    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000);color: #fff" (click)="onAbbUomo(inserimentoMerce)">ABB UOMO</button>
+    
+
+
+  </form>
+</div>
+
+</body>
+</html>

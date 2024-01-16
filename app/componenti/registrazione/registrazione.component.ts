@@ -12,7 +12,7 @@ export class RegistrazioneComponent implements OnInit{
   inserito:boolean | undefined 
   utente: any;
   form: any;
-  constructor(private authservice: AuthService){}
+  constructor(private authservice: AuthService, private database:DatabaseService){}
 
   ngOnInit(): void{
 
@@ -23,9 +23,29 @@ export class RegistrazioneComponent implements OnInit{
     const password= form.value.password
     this.inserito=true
 
-    this.authservice.signUp({email: email, password: password, returnSecureToken: true}).subscribe(data=>{
+    this.authservice.signUp({email: email, password: password, returnSecureToken: true}).subscribe((data:any)=>{
       console.log(data)
+
+      const expirationDate= new Date(new Date().getTime() + data.expiresIn*1000)
+      //la somma tra l'ora di adesso più la data di quando scaderà moltiplicato per mille
+      //perchè l'ora di adesso è espresso in millisecondi mentre l'altra in secondi -> abbiamo eseguito una conversione
+    
+
+      this.authservice.creaUtente(data.email, data.localId, data.idToken,  expirationDate)
+    
+      localStorage.setItem('user', JSON.stringify(this.authservice.user))
+      console.log(this.authservice.user)
+
+      this.database.insertUtente({email}).subscribe((data:any)=>{
+        console.log(data)
+      })
+
+
+
+
     })
+
+
 
  
 

@@ -1,1 +1,84 @@
-<p>fatture works!</p>
+<html>
+<style>
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+input[type=text], select {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+input[type=number], select {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+</style>
+<body>
+
+
+<div>
+
+  <h2>Inserimento Merce</h2>
+
+  <form #inserimentoFattura="ngForm" (ngSubmit)="onSubmit(inserimentoFattura) ">
+
+    <label>ID</label>
+    <input type="text" name="id" id="id" value="submit" ngModel required>
+
+    <br>
+    <br>
+
+    <label>INTESTATARIO</label>
+    <input type="text" name="intestatario" id="intestatario" value="submit" ngModel required>
+
+    <br>
+    <br>
+
+    <label>DESCRIZIONE</label>
+    <textarea type="text" name="descrizione" id="descrizione" value="submit" ngModel required></textarea>
+
+    <label>IMPORTO</label>
+    <mat-form-field floatLabel="always">
+      <input matInput type="number" name="importo" id="importo" class="example-right-align" placeholder="0" value="submit" ngModel required>
+      <span matTextPrefix>€&nbsp;</span>
+    </mat-form-field>
+
+    <br>
+
+    <button mat-raised-button type="submit" style="position: absolute; right: 0px; background: linear-gradient(237deg, #005ce6,#ff0000)" [disabled]="!inserimentoFattura.valid">INSERISCI FATTURA</button>
+
+
+  </form>
+</div>
+
+</body>
+</html>

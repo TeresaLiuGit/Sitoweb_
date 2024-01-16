@@ -1,3 +1,10 @@
 <p>utenti works!</p>
 <button mat-raised-button color="primary" (click)="onDeleteUtente()"> Elimina utente</button>
+
 <button mat-raised-button color="primary" (click)="onGetUtenti()"> Ottieni utenti</button>
+<ul id="dropdown" *ngFor="let utente of utente; index as i">
+    <a routerLink="/utente/{{i}}">
+        <p>{{utente.email}}</p>
+    </a>
+    </ul>
+    
