@@ -47,7 +47,7 @@ textarea {
 
 <div>
 
-  <h2>Inserimento Merce</h2>
+  <h2>Inserimento della Merce</h2>
 
   <form #inserimentoMerce="ngForm" (ngSubmit)="onSubmit(inserimentoMerce)">
 
@@ -66,11 +66,16 @@ textarea {
     </mat-form-field>
 
     <br>
+    
+    <p>Selezionare la categoria di merce:</p>
 
-    <button mat-raised-button type="submit" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(inserimentoMerce)">ABB DONNA</button>
-    
-    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000);color: #fff" (click)="onAbbUomo(inserimentoMerce)">ABB UOMO</button>
-    
+    <button mat-button type="button" (click)="onAbbDonna(inserimentoMerce)">Abbigliamento Donna</button>
+    <br>
+    <button mat-button type="button" (click)="onAbbUomo(inserimentoMerce)">Abbigliamento Uomo</button>
+    <br>
+    <br>
+    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(inserimentoMerce)">INSERISCI</button>
+
 
 
   </form>

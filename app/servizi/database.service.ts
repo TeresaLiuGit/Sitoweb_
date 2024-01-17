@@ -8,8 +8,10 @@ import { AuthService } from '../auth/auth.service';
 export class DatabaseService {
 
   urlUtente='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/utente.json'
-  urlMerce='https://appdocente-fa4a6-default-rtdb.europe-west1.firebasedatabase.app/merce.json'
-  urlFattura='https://appdocente-fa4a6-default-rtdb.europe-west1.firebasedatabase.app/fattura.json'
+
+
+  urlMerce='https://appdocente-fa4a6-default-rtdb.europe-west1.firebasedatabase.app/merce'
+  urlFattura='https://appdocente-fa4a6-default-rtdb.europe-west1.firebasedatabase.app/fattura'
 
 
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -39,18 +41,21 @@ export class DatabaseService {
   //MERCE
 
   insertAbbDonna(body:{}){
-    return this.http.post(this.urlMerce,body)
+    return this.http.post(this.urlMerce+'/abbDonna.json',body)
   }
 
   insertAbbUomo(body:{}){
-    return this.http.post(`${this.urlMerce}+'/abbUomo'?auth=${this.authService.user.token}`,body)
+    return this.http.post(this.urlMerce+'/abbUomo.json',body)
+  }
 
+  insertMerce(body:{}){
+    return this.http.post(this.urlMerce+'.json',body)
   }
 
   getMerce(){
-    return this.http.get(this.urlMerce)
+    return this.http.get(this.urlMerce+'.json')
   }
-  deleteMerce( id:string){
+  deleteMerce(id:string){
     console.log(this.urlMerce+`/${id}.json`)
     return this.http.delete(this.urlMerce+`/${id}.json`)
   }
@@ -63,10 +68,10 @@ export class DatabaseService {
 
   //FATTURA
   insertFattura(body:{}){
-    return this.http.post(this.urlFattura,body)
+    return this.http.post(this.urlFattura+'.json',body)
   }
   getFattura(){
-    return this.http.get(this.urlFattura)
+    return this.http.get(this.urlFattura+'.json')
   }
   deleteFattura( id:string){
     console.log(this.urlFattura+`/${id}.json`)

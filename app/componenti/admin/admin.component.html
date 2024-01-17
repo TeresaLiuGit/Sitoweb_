@@ -43,17 +43,85 @@
 
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened style="background-color:#f2f2f2;">
+
     <mat-list role="list">
+
       <mat-list-item class="h2" role="listitem" routerLink=""><mat-icon>home</mat-icon>HOME</mat-list-item>
-      <mat-list-item class="h2" role="listitem" routerLink="utenti"><mat-icon>person</mat-icon>UTENTI</mat-list-item>
-      <mat-list-item class="h2" role="listitem" routerLink="merce"><mat-icon>inventory_2</mat-icon>MERCE</mat-list-item>
-      <mat-list-item class="h2" role="listitem" routerLink="fatture"><mat-icon>receipt_long</mat-icon>FATTURE</mat-list-item>
+
+
+      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="utente">UTENTE
+          <mat-icon>person</mat-icon>
+          <mat-menu #utente="matMenu" style="color: #e5e5e5;">
+            <button mat-menu-item (click)="onListaUtente">Lista Utenti</button>
+            <button mat-menu-item [matMenuTriggerFor]="menuUtente">Elimina Utente</button>
+          </mat-menu>
+
+
+          <mat-menu #menuUtente="matMenu" style="color: #e5e5e5;">
+            <form (click)="stopPropagation($event)">
+              <mat-label>Inserire ID da eliminare</mat-label>
+              <input type="text" name="idUtente" id="idUtente" >
+            </form>
+            <button mat-menu-item (click)="onListaUtente">Elimina Utente</button>
+          </mat-menu>
+
+      </mat-list-item>
+
+
+
+      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="merce">MERCE
+          <mat-icon>inventory_2</mat-icon>
+          <mat-menu #merce="matMenu" style="color: #e5e5e5;">
+            <button mat-menu-item (click)="onListaMerce()">Lista Merce</button>
+            <button mat-menu-item routerLink="merce">Inserisci Merce</button>
+            <button mat-menu-item>Modifica Merce</button>
+            <button mat-menu-item [matMenuTriggerFor]="menuProdotto">Elimina Merce</button>
+          </mat-menu>
+
+
+          <mat-menu #menuProdotto="matMenu" style="color: #e5e5e5;">
+            <form (click)="stopPropagation($event)">
+              <mat-label>Inserire ID da eliminare</mat-label>
+              <input type="text" name="idProdotto" id="idProdotto" >
+            </form>
+            <button mat-menu-item (click)="onDeleteMerce()">Elimina Prodotto</button>
+          </mat-menu>
+  
+        </mat-list-item>
+
+
+
+
+        
+      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="fattura">FATTURE
+          <mat-icon>receipt_long</mat-icon>
+
+          <mat-menu #fattura="matMenu" style="color: #e5e5e5;">
+            <button mat-menu-item (click)="onListaFatture()">Lista Fatture</button>
+            <button mat-menu-item routerLink="fatture">Inserisci Fattura</button>
+            <button mat-menu-item>Modifica Fattura</button>
+            <button mat-menu-item [matMenuTriggerFor]="menuFattura">Elimina Fattura</button>
+          </mat-menu>
+
+          <mat-menu #menuFattura="matMenu" style="color: #e5e5e5;">
+            <form (click)="stopPropagation($event)">
+            <mat-label>Inserire ID da eliminare</mat-label>
+            <input type="text" name="idFattura" id="idFattura" >
+            <button mat-menu-item (click)="onDeleteFatture()">Elimina Fattura</button>
+            </form>
+          </mat-menu>  
+
+      </mat-list-item> 
 
     </mat-list>
+
+
 
   </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
+
+
 

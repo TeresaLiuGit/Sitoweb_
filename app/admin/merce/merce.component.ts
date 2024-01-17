@@ -20,26 +20,38 @@ export class MerceComponent {
     const descrizione= form.value.descrizione
     const costo= form.value.costo
 
+    this.database.insertMerce({id:id, descrizione:descrizione, costo:costo}).subscribe(data=>{
+      console.log(data)
+      })
+
+  }
+  
+
+    onAbbDonna(form: NgForm){
+      const id= form.value.id
+      const descrizione= form.value.descrizione
+      const costo= form.value.costo
+
     this.database.insertAbbDonna({id:id, descrizione:descrizione, costo:costo}).subscribe((data:any)=>{
       console.log(data)
       })
-    
-      form.reset()
-
+  
     }
-
-
-  //onAbbDonna(form: NgForm){
 
     onAbbUomo(form: NgForm){
       const id= form.value.id
       const descrizione= form.value.descrizione
       const costo= form.value.costo
   
-      this.database.insertAbbUomo({id, descrizione, costo}).subscribe((data:any)=>{
+      this.database.insertAbbUomo({id:id, descrizione:descrizione, costo:costo}).subscribe((data:any)=>{
         console.log(data)
         })
-      }
+  
+
+    }
+
+
+
 
 
 }

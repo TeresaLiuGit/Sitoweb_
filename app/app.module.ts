@@ -19,6 +19,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 //COMPONENTI
@@ -37,7 +38,7 @@ import { MerceComponent } from './admin/merce/merce.component';
 import { FattureComponent } from './admin/fatture/fatture.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
-
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -73,7 +74,9 @@ import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
     MatInputModule,
     HttpClientModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
