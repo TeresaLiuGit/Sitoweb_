@@ -14,6 +14,10 @@ import { FattureComponent } from './admin/fatture/fatture.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
 import { authGuard } from './auth/auth.guard';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
+import { FormMerceComponent } from './admin/form-merce/form-merce.component';
+import { FormFatturaComponent } from './admin/form-fattura/form-fattura.component';
+import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
+import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent, children:[
@@ -38,6 +42,13 @@ const routes: Routes = [
     {path:"utenti", component: UtentiComponent},
     {path:"merce", component: MerceComponent},
     {path:"fatture", component: FattureComponent},
+    {path:"formFattura", component: FormFatturaComponent },
+    {path:"formMerce", component: FormMerceComponent},
+    {path:"listaMerce", component: ListaMerceComponent},
+    {path:"listaFattura", component: ListaFatturaComponent},
+
+
+
   ]},
 
   {path:"404", component: NotFoundComponent},

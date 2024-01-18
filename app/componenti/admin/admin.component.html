@@ -49,10 +49,10 @@
       <mat-list-item class="h2" role="listitem" routerLink=""><mat-icon>home</mat-icon>HOME</mat-list-item>
 
 
-      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="utente">UTENTE
-          <mat-icon>person</mat-icon>
+      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="utente">
+          <mat-icon>person</mat-icon>UTENTE
           <mat-menu #utente="matMenu" style="color: #e5e5e5;">
-            <button mat-menu-item (click)="onListaUtente">Lista Utenti</button>
+            <button mat-menu-item routerLink="utenti">Lista Utenti</button>
             <button mat-menu-item [matMenuTriggerFor]="menuUtente">Elimina Utente</button>
           </mat-menu>
 
@@ -62,19 +62,19 @@
               <mat-label>Inserire ID da eliminare</mat-label>
               <input type="text" name="idUtente" id="idUtente" >
             </form>
-            <button mat-menu-item (click)="onListaUtente">Elimina Utente</button>
+            <button mat-menu-item (click)="onDeleteUtente">Elimina Utente</button>
           </mat-menu>
 
       </mat-list-item>
 
 
 
-      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="merce">MERCE
-          <mat-icon>inventory_2</mat-icon>
+      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="merce">
+          <mat-icon>inventory_2</mat-icon>MERCE
           <mat-menu #merce="matMenu" style="color: #e5e5e5;">
-            <button mat-menu-item (click)="onListaMerce()">Lista Merce</button>
+            <button mat-menu-item routerLink="listaMerce">Lista Merce</button>
             <button mat-menu-item routerLink="merce">Inserisci Merce</button>
-            <button mat-menu-item>Modifica Merce</button>
+            <button mat-menu-item routerLink="formMerce">Modifica Merce</button>
             <button mat-menu-item [matMenuTriggerFor]="menuProdotto">Elimina Merce</button>
           </mat-menu>
 
@@ -93,13 +93,13 @@
 
 
         
-      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="fattura">FATTURE
-          <mat-icon>receipt_long</mat-icon>
+      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="fattura">
+          <mat-icon>receipt_long</mat-icon>FATTURE
 
           <mat-menu #fattura="matMenu" style="color: #e5e5e5;">
-            <button mat-menu-item (click)="onListaFatture()">Lista Fatture</button>
+            <button mat-menu-item routerLink="listaFattura">Lista Fatture</button>
             <button mat-menu-item routerLink="fatture">Inserisci Fattura</button>
-            <button mat-menu-item>Modifica Fattura</button>
+            <button mat-menu-item routerLink="formFattura">Modifica Fattura</button>
             <button mat-menu-item [matMenuTriggerFor]="menuFattura">Elimina Fattura</button>
           </mat-menu>
 
@@ -119,6 +119,11 @@
 
   </mat-drawer>
   <mat-drawer-content>
+    <div *ngFor="let item of listaMerce | keyvalue"> 
+      ID: <b>{{item.key}}</b> 
+      VALORI:<b>{{item.value}}</b> 
+  </div>
+
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

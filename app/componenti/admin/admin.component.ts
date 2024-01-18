@@ -1,7 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Injectable, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { DatabaseService } from 'src/app/servizi/database.service';
 
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-admin',
@@ -10,11 +13,11 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 })
 export class AdminComponent {
 
-  value: any
   prodotto: any;
   fattura: any;
   labelPosition: 'before' | 'after' = 'after';
   utente: HTMLInputElement | undefined;
+  listaMerce:[{}] | any
 
   constructor(private database:DatabaseService){}
 
@@ -22,26 +25,26 @@ export class AdminComponent {
     event.stopPropagation();
   }
 
+
+      //UTENTE
+
   onListaUtente(){
-    this.database.getUtente().subscribe(data=>{
+    this.database.getUtente().subscribe((data:any)=>{
       console.log(data)
     })
   }
 
   onDeleteUtente(){
     this.utente = document.getElementById('idUtente') as HTMLInputElement
-    this.database.deleteMerce(this.utente.value).subscribe(data=>{
-          console.log(data)
-    })
-  }
-
-
-
-  onListaMerce(){
-    this.database.getMerce().subscribe(data=>{
+    this.database.deleteUtente(this.utente.value).subscribe(data=>{
       console.log(data)
     })
   }
+
+
+  
+
+    //MERCE
 
   onDeleteMerce(){
     this.prodotto = document.getElementById('idProdotto') as HTMLInputElement
@@ -51,13 +54,7 @@ export class AdminComponent {
   }
 
 
-
-
-  onListaFatture(){
-    this.database.getFattura().subscribe(data=>{
-      console.log(data)
-    })
-  }
+    //FATTURE
 
   onDeleteFatture(){
     this.fattura = document.getElementById('idFattura') as HTMLInputElement

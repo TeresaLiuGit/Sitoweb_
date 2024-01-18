@@ -40,9 +40,9 @@
   </button>
 <br>
 <div>
-  <button mat-icon-button><mat-icon>search</mat-icon></button>
-  <button mat-icon-button routerLink="carrello"><mat-icon>shopping_cart_checkout</mat-icon></button>
-  <button mat-icon-button [matMenuTriggerFor]="persona">
+  <button mat-icon-button style="color: #e5e5e5;"><mat-icon>search</mat-icon></button>
+  <button mat-icon-button routerLink="carrello" style="color: #e5e5e5;"><mat-icon>shopping_cart_checkout</mat-icon></button>
+  <button mat-icon-button [matMenuTriggerFor]="persona" style="color: #e5e5e5;">
 
      <mat-menu #persona="matMenu" style="color: #e5e5e5;">
        <button mat-menu-item routerLink="registrazione"><mat-icon>how_to_reg</mat-icon>Registrati</button>
@@ -61,7 +61,7 @@
 
 
 
-<mat-drawer-container>
+<mat-drawer-container class="example-container">
 
     <mat-drawer mode="side" opened style="background-color:#f2f2f2;">
         <mat-list role="list">

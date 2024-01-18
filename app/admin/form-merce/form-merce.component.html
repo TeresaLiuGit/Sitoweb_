@@ -47,34 +47,28 @@ textarea {
 
 <div>
 
-  <h1 style="font-weight: bold;">Inserimento delle Fatture</h1>
+  <h1 style="font-weight: bold;">Modifica della Merce</h1>
 
-  <form #inserimentoFattura="ngForm" (ngSubmit)="onSubmit(inserimentoFattura) ">
+  <form #modificaMerce="ngForm" (ngSubmit)="onSubmit(modificaMerce)">
 
     <label>ID</label>
     <input type="text" name="id" id="id" value="submit" ngModel required>
 
     <br>
     <br>
-
-    <label>INTESTATARIO</label>
-    <input type="text" name="intestatario" id="intestatario" value="submit" ngModel required>
-
-    <br>
-    <br>
-
     <label>DESCRIZIONE</label>
     <textarea type="text" name="descrizione" id="descrizione" value="submit" ngModel required></textarea>
 
-    <label>IMPORTO</label>
+    <label>COSTO</label>
     <mat-form-field floatLabel="always">
-      <input matInput type="number" name="importo" id="importo" class="example-right-align" placeholder="0" value="submit" ngModel required>
+      <input matInput type="number" name="costo" id="costo" value="submit" placeholder="0" ngModel required>
       <span matTextPrefix>€&nbsp;</span>
     </mat-form-field>
 
     <br>
+    
+    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(modificaMerce)">MODIFICA</button>
 
-    <button mat-raised-button type="submit" style="background: linear-gradient(237deg, #005ce6,#ff0000);  color: #fff" [disabled]="!inserimentoFattura.valid">INSERISCI FATTURA</button>
 
 
   </form>

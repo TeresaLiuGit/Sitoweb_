@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DatabaseService } from 'src/app/servizi/database.service';
+
+
 
 @Component({
   selector: 'app-registrazione',
@@ -12,6 +14,8 @@ export class RegistrazioneComponent implements OnInit{
   inserito:boolean | undefined 
   utente: any;
   form: any;
+  listaUtenti:[{}] | any
+
   constructor(private authservice: AuthService, private database:DatabaseService){}
 
   ngOnInit(): void{
@@ -41,6 +45,7 @@ export class RegistrazioneComponent implements OnInit{
       })
 
 
+    
 
 
     })
@@ -51,3 +56,4 @@ export class RegistrazioneComponent implements OnInit{
 
   }
 }
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegistrazioneComponent } from 'src/app/componenti/registrazione/registrazione.component';
 import { DatabaseService } from 'src/app/servizi/database.service';
 
 @Component({
@@ -7,30 +8,19 @@ import { DatabaseService } from 'src/app/servizi/database.service';
   styleUrls: ['./utenti.component.css']
 })
 export class UtentiComponent implements OnInit {
-  utente:any
-  id:string | any
 
-  constructor(private database:DatabaseService){}
+  listaUtenti:[{}] | any
 
+constructor(private database:DatabaseService, private registrazione:RegistrazioneComponent){}
 
-  ngOnInit():void{
-    this.database.getUtente()
-    .subscribe(data=>{
-      this.utente=data
-      console.log(this.utente)
-    })
-  
-  }
+  ngOnInit(): void {
 
-
-  onGetUtenti(){
-  }
-
-    onDeleteUtente(){
-    this.database.deleteUtente(this.id).subscribe((data: any)=>{
+    this.database.getUtente().subscribe(data=>{
       console.log(data)
     })
-  }
+
+    }
+
 
 
 

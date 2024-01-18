@@ -1,0 +1,9 @@
+<h1 style="font-weight: bold;">Lista Merce</h1>
+<body>
+
+    <div *ngFor="let item of listaMerce | keyvalue"> 
+        ID: <b>{{item.key}}</b> 
+        VALORI:<b>{{item.value}}</b> 
+    </div>
+
+</body>

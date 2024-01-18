@@ -7,11 +7,8 @@ import { AuthService } from '../auth/auth.service';
 })
 export class DatabaseService {
 
-  urlUtente='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/utente.json'
-
-
-  urlMerce='https://appdocente-fa4a6-default-rtdb.europe-west1.firebasedatabase.app/merce'
-  urlFattura='https://appdocente-fa4a6-default-rtdb.europe-west1.firebasedatabase.app/fattura'
+  url='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/'
+  bodyFattura:any
 
 
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -19,20 +16,20 @@ export class DatabaseService {
 
   //UTENTE
   insertUtente(body:{}){
-    return this.http.post(`${this.urlUtente}?auth=${this.authService.user.token}`, body)
+    return this.http.post(`${this.url}+'utente.json'?auth=${this.authService.user.token}`, body)
   }
 
   getUtente(){
-    return this.http.get(this.urlUtente)
+    return this.http.get(this.url+'utente.json')
   }
 
   deleteUtente( id:string){
-    console.log(this.urlUtente+`/${id}.json`)
-    return this.http.delete(this.urlUtente+`/${id}.json`)
+    console.log(this.url+'utente.json'+`/${id}.json`)
+    return this.http.delete(this.url+`/${id}.json`)
   }
   
   patchUtente(id:string, body:{}){
-    return this.http.patch(this.urlUtente+`/${id}.json`,body)
+    return this.http.patch(this.url+'utente.json'+`/${id}.json`,body)
   }
 
 
@@ -41,26 +38,27 @@ export class DatabaseService {
   //MERCE
 
   insertAbbDonna(body:{}){
-    return this.http.post(this.urlMerce+'/abbDonna.json',body)
+    return this.http.post(this.url+'merce'+'/abbDonna.json',body)
   }
 
   insertAbbUomo(body:{}){
-    return this.http.post(this.urlMerce+'/abbUomo.json',body)
+    return this.http.post(this.url+'merce'+'/abbUomo.json',body)
   }
 
   insertMerce(body:{}){
-    return this.http.post(this.urlMerce+'.json',body)
+    return this.http.post(this.url+'merce.json',body)
   }
 
   getMerce(){
-    return this.http.get(this.urlMerce+'.json')
+    return this.http.get(this.url+'merce.json')
   }
+
   deleteMerce(id:string){
-    console.log(this.urlMerce+`/${id}.json`)
-    return this.http.delete(this.urlMerce+`/${id}.json`)
+    console.log(this.url+'merce'+`/${id}.json`)
+    return this.http.delete(this.url+'merce'+`/${id}.json`)
   }
   patchMerce(id:string, body:{}){
-    return this.http.patch(this.urlMerce+`/${id}.json`,body)
+    return this.http.patch(this.url+'merce'+`/${id}.json`,body)
   }
 
 
@@ -68,17 +66,17 @@ export class DatabaseService {
 
   //FATTURA
   insertFattura(body:{}){
-    return this.http.post(this.urlFattura+'.json',body)
+    return this.http.post(this.url+'fattura.json',body)
   }
   getFattura(){
-    return this.http.get(this.urlFattura+'.json')
+    return this.http.get(this.url+'fattura.json')
   }
   deleteFattura( id:string){
-    console.log(this.urlFattura+`/${id}.json`)
-    return this.http.delete(this.urlFattura+`/${id}.json`)
+    console.log(this.url+'fattura'+`/${id}.json`)
+    return this.http.delete(this.url+'fattura'+`/${id}.json`)
   }
   patchFattura(id:string, body:{}){
-    return this.http.patch(this.urlFattura+`/${id}.json`,body)
+    return this.http.patch(this.url+'fattura'+`/${id}.json`,body)
   }
 
 

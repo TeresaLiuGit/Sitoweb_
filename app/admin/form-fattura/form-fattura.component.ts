@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from 'src/app/modelli/user.model';
 import { DatabaseService } from 'src/app/servizi/database.service';
 
 @Component({
-  selector: 'app-fatture',
-  templateUrl: './fatture.component.html',
-  styleUrls: ['./fatture.component.css']
+  selector: 'app-form-fattura',
+  templateUrl: './form-fattura.component.html',
+  styleUrls: ['./form-fattura.component.css']
 })
-export class FattureComponent {
-  
+export class FormFatturaComponent {
+ 
   fattura: any
-  body:any
-  
+
   constructor(private database:DatabaseService){}
 
   onSubmit(form: NgForm){
@@ -20,17 +18,15 @@ export class FattureComponent {
     const descrizione= form.value.descrizione
     const importo= form.value.importo
 
-    this.database.insertFattura({id:id, descrizione:descrizione, importo:importo})
+    console.log({id, descrizione, importo})
+    this.database.patchFattura(id, {descrizione, importo})
     .subscribe((data:any)=>{
-      console.log(data)
-      this.database.bodyFattura={id, descrizione, importo}
-
+      this.fattura=data
+      console.log(this.fattura)
       })
     
       form.reset()
 
     }
-    
-
 
 }
