@@ -13,42 +13,37 @@ export class ListaFatturaComponent implements OnInit{
   chiave:any
   chiaviValoriListaFattura: any;
   attributi:any
+  fine:any
 
-
-  idfattura:any
-  body=this.database.bodyFattura
-fine:any
 
 constructor(private database:DatabaseService){}
 
-  ngOnInit(): void {
-      this.database.getFattura().subscribe(data=>{
-        console.log(data)
-        this.listaFattura=data  
-        this.valoriListaFattura=(Object.values(this.listaFattura));  
-        console.log(this.valoriListaFattura)
 
-        for(this.chiave in this.valoriListaFattura) {
-          if(this.valoriListaFattura.hasOwnProperty(this.chiave)) {
-          this.chiaviValoriListaFattura = this.valoriListaFattura[this.chiave];         
-          console.log(this.chiaviValoriListaFattura)
+ngOnInit(): void {
+  this.database.getFattura().subscribe(data=>{
+  console.log(data)
+
+  this.listaFattura=data  
 
 
-          this.attributi=Object.entries(this.chiaviValoriListaFattura)
-          console.log(this.attributi)
+    this.valoriListaFattura=(Object.values(this.listaFattura));  
+  //  console.log(this.valoriListaUtenti)
 
+    for(this.chiave in this.listaFattura) {
+      if(this.listaFattura.hasOwnProperty(this.chiave)) {
+      this.chiaviValoriListaFattura= this.listaFattura[this.chiave];    
+      this.fine=((Object.entries(this.chiaviValoriListaFattura)))
+      console.log('ID:'+this.chiave+' VALORI:'+this.fine)
 
-          this.fine=JSON.stringify(this.attributi)
-          console.log(this.fine)
-        }
+      }
+        
+
       }
 
-  
-
-      })
-    }
     
 
-  
+})
 
-}
+
+}}
+

@@ -8,9 +8,10 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  constructor(private authService: AuthService, private loginComponent: LoginComponent){}
+  constructor(private authService: AuthService, private login: LoginComponent){}
 
   isAdmin= this.authService.isAdmin
+  autenticato= this.login.isAuthenticated
 
 
   ngOnInit(): void {
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit{
   }
 
   onLogout(){
-    this.loginComponent.isAuthenticated= false
+    this.login.isAuthenticated= false
     this.authService.logout()
   }
 

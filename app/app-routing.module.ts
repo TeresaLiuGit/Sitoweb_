@@ -38,7 +38,7 @@ const routes: Routes = [
   ]},
   //Gli utenti possono accedere al carrello e al pagamento solo se autenticati
 
-  {path:"admin", component: AdminComponent, canActivateChild:[authGuard], children:[
+  {path:"admin", component: AdminComponent, children:[
     {path:"utenti", component: UtentiComponent},
     {path:"merce", component: MerceComponent},
     {path:"fatture", component: FattureComponent},

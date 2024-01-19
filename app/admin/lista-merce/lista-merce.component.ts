@@ -12,16 +12,41 @@ import { MerceComponent } from '../merce/merce.component';
 export class ListaMerceComponent implements OnInit{
 
   listaMerce:[{}] | any
-  
-  constructor(private database:DatabaseService, private admin:AdminComponent, private merce:MerceComponent){}
+  valoriListaMerce:any
+  chiave:any
+  chiaviValoriListaMerce: any;
+  attributi:any
+  fine:any
+
+
+constructor(private database:DatabaseService){}
+
 
   ngOnInit(): void {
-    this.database.getMerce().subscribe(data=>{
+      this.database.getMerce().subscribe(data=>{
       console.log(data)
-      this.listaMerce= data
-      })
-    }
+
+      this.listaMerce=data  
+
+
+        this.valoriListaMerce=(Object.values(this.listaMerce));  
+      //  console.log(this.valoriListaMerce)
+
+        for(this.chiave in this.listaMerce) {
+          if(this.listaMerce.hasOwnProperty(this.chiave)) {
+          this.chiaviValoriListaMerce = this.listaMerce[this.chiave];    
+          this.fine=((Object.entries(this.chiaviValoriListaMerce)))
+          console.log('ID:'+this.chiave+' VALORI:'+this.fine)
+
+          }
+            
+
+          }
+
+        
+
+    })
+    
   
-  
-  
-}
+}}
+

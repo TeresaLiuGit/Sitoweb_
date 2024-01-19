@@ -2,11 +2,12 @@
 
     <h1 style="font-weight: bold;">Lista Fatture</h1>
 
-
+<ol>
     <div *ngFor="let item of listaFattura | keyvalue"> 
-        ID: <b>{{item.key}}</b> 
-        <br>
-        {{fine}}
+        <li>       
+            ID: <b>{{item.key}}</b> 
+       </li>
     </div>
+</ol>
 
 </body>

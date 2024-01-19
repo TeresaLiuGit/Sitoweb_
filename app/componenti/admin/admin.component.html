@@ -58,11 +58,11 @@
 
 
           <mat-menu #menuUtente="matMenu" style="color: #e5e5e5;">
-            <form (click)="stopPropagation($event)">
+            <form (click)="stopPropagation($event)" style="text-align: center;">
               <mat-label>Inserire ID da eliminare</mat-label>
               <input type="text" name="idUtente" id="idUtente" >
             </form>
-            <button mat-menu-item (click)="onDeleteUtente">Elimina Utente</button>
+            <button mat-menu-item (click)="onDeleteUtente()" style="margin: auto; width: 55%;">Elimina Utente</button>
           </mat-menu>
 
       </mat-list-item>
@@ -80,11 +80,11 @@
 
 
           <mat-menu #menuProdotto="matMenu" style="color: #e5e5e5;">
-            <form (click)="stopPropagation($event)">
+            <form (click)="stopPropagation($event)" style="text-align: center;">
               <mat-label>Inserire ID da eliminare</mat-label>
               <input type="text" name="idProdotto" id="idProdotto" >
             </form>
-            <button mat-menu-item (click)="onDeleteMerce()">Elimina Prodotto</button>
+            <button mat-menu-item (click)="onDeleteMerce()" style="margin: auto; width: 60%;">Elimina Prodotto</button>
           </mat-menu>
   
         </mat-list-item>
@@ -104,10 +104,10 @@
           </mat-menu>
 
           <mat-menu #menuFattura="matMenu" style="color: #e5e5e5;">
-            <form (click)="stopPropagation($event)">
+            <form (click)="stopPropagation($event)" style="text-align: center;">
             <mat-label>Inserire ID da eliminare</mat-label>
             <input type="text" name="idFattura" id="idFattura" >
-            <button mat-menu-item (click)="onDeleteFatture()">Elimina Fattura</button>
+            <button mat-menu-item (click)="onDeleteFatture()" style="margin: auto; width: 55%;">Elimina Fattura</button>
             </form>
           </mat-menu>  
 
@@ -119,11 +119,6 @@
 
   </mat-drawer>
   <mat-drawer-content>
-    <div *ngFor="let item of listaMerce | keyvalue"> 
-      ID: <b>{{item.key}}</b> 
-      VALORI:<b>{{item.value}}</b> 
-  </div>
-
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

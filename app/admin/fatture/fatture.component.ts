@@ -11,7 +11,6 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 export class FattureComponent {
   
   fattura: any
-  body:any
   
   constructor(private database:DatabaseService){}
 
@@ -23,7 +22,6 @@ export class FattureComponent {
     this.database.insertFattura({id:id, descrizione:descrizione, importo:importo})
     .subscribe((data:any)=>{
       console.log(data)
-      this.database.bodyFattura={id, descrizione, importo}
 
       })
     

@@ -9,20 +9,18 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 })
 export class FormFatturaComponent {
  
-  fattura: any
-
   constructor(private database:DatabaseService){}
 
   onSubmit(form: NgForm){
     const id= form.value.id
+    const intestatario= form.value.intestatario
     const descrizione= form.value.descrizione
     const importo= form.value.importo
 
-    console.log({id, descrizione, importo})
-    this.database.patchFattura(id, {descrizione, importo})
+    console.log({id, intestatario, descrizione, importo})
+    this.database.patchFattura(id, {intestatario, descrizione, importo})
     .subscribe((data:any)=>{
-      this.fattura=data
-      console.log(this.fattura)
+      console.log(data)
       })
     
       form.reset()

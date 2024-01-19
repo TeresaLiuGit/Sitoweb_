@@ -8,7 +8,6 @@ import { AuthService } from '../auth/auth.service';
 export class DatabaseService {
 
   url='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/'
-  bodyFattura:any
 
 
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -16,7 +15,7 @@ export class DatabaseService {
 
   //UTENTE
   insertUtente(body:{}){
-    return this.http.post(`${this.url}+'utente.json'?auth=${this.authService.user.token}`, body)
+    return this.http.post(this.url+'utente.json', body)
   }
 
   getUtente(){
@@ -24,12 +23,12 @@ export class DatabaseService {
   }
 
   deleteUtente( id:string){
-    console.log(this.url+'utente.json'+`/${id}.json`)
-    return this.http.delete(this.url+`/${id}.json`)
+    console.log(this.url+'utente'+`/${id}.json`)
+    return this.http.delete(this.url+'utente'+`/${id}.json`)
   }
   
   patchUtente(id:string, body:{}){
-    return this.http.patch(this.url+'utente.json'+`/${id}.json`,body)
+    return this.http.patch(this.url+'utente'+`/${id}.json`,body)
   }
 
 
@@ -38,16 +37,25 @@ export class DatabaseService {
   //MERCE
 
   insertAbbDonna(body:{}){
-    return this.http.post(this.url+'merce'+'/abbDonna.json',body)
+    return this.http.post(this.url+'abbDonna.json',body)
   }
 
   insertAbbUomo(body:{}){
-    return this.http.post(this.url+'merce'+'/abbUomo.json',body)
+    return this.http.post(this.url+'abbUomo.json',body)
   }
 
   insertMerce(body:{}){
     return this.http.post(this.url+'merce.json',body)
   }
+
+  getMerceDonna(){
+    return this.http.get(this.url+'abbDonna.json')
+  }
+
+  getMerceUomo(){
+    return this.http.get(this.url+'abbUomo.json')
+  }
+
 
   getMerce(){
     return this.http.get(this.url+'merce.json')

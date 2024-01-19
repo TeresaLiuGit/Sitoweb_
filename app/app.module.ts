@@ -85,8 +85,9 @@ import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.compo
     MatTableModule,
     MatCheckboxModule,
     MatRadioModule
+    
   ],
-  providers: [],
+  providers: [RegistrazioneComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

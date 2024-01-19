@@ -36,6 +36,7 @@ export class AdminComponent {
 
   onDeleteUtente(){
     this.utente = document.getElementById('idUtente') as HTMLInputElement
+    console.log(this.utente)
     this.database.deleteUtente(this.utente.value).subscribe(data=>{
       console.log(data)
     })
