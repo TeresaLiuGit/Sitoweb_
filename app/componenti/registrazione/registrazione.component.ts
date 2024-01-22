@@ -11,24 +11,56 @@ import { DatabaseService } from 'src/app/servizi/database.service';
   styleUrls: ['./registrazione.component.css']
 })
 export class RegistrazioneComponent {
+
   inserito:boolean | undefined 
-  utente: any;
-  form: any;
-  errore:string | any
+  listaUtente:[{}] | any
+  chiave:any
+  valori: any;
+  array:any
+
 
 
   constructor(private authservice: AuthService, private database:DatabaseService){}
 
   onSubmit(form: NgForm){
-    const email= form.value.email
-    const password= form.value.password
+    const nuovaEmail= form.value.email
+    const nuovaPassword= form.value.password
     this.inserito=true
 
-      this.database.insertUtente({email:email, password:password}).subscribe((data:any)=>{
-        console.log(data)
-      })
-      form.reset()
+    console.log(nuovaEmail, nuovaPassword)
 
-  }
-}
+    this.database.getUtente().subscribe(data=>{
+      this.listaUtente=data  
+      this.array=[]
+
+        for(this.chiave in this.listaUtente) {
+        
+          if(this.listaUtente.hasOwnProperty(this.chiave)) {
+          this.valori = this.listaUtente[this.chiave]; 
+
+          const uid= Object.keys(data)[0]
+          const email = this.valori.email;
+          const password = this.valori.password;
+  
+          this.array.push({ uid, email, password })      
+          
+
+          if(nuovaEmail== this.array.email){
+            console.log('EMAIL GIA ESISTENTE')
+          }
+
+          break
+        }
+    }
+  })
+
+          this.database.insertUtente({email:nuovaEmail, password:nuovaPassword}).subscribe((data:any)=>{
+             console.log(data)
+          })
+
+        
+        }
+      }
+    
+//NON FUNZIONA, AGGIUSTARE
 

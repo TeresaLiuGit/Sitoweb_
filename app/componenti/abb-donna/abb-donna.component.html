@@ -1,27 +1,77 @@
-<h1 style="font-weight: bold;">ABBIGLIAMENTO DONNA</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<div *ngFor="let item of listaAbbigliamento | keyvalue"> 
-    <div>
-            <mat-card class="example-card">
-                <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>{{item.key}}</mat-card-title>
-                  <mat-card-subtitle>{{item.value}}</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                  <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                    bred for hunting.
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button>LIKE</button>
-                  <button mat-button>SHARE</button>
-                </mat-card-actions>
-              </mat-card>
-              
-        </div>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .column {
+      width: 45%; 
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .mat-card {
+      width: 100%; 
+      margin-bottom: 30px; 
+    }
+  </style>
+
+
+</head>
+<body>
+  <div class="column">
+
+    <div *ngFor="let item of left; let i=index"> 
+      <mat-card class="mat-card">
+        <img mat-card-image src="\assets\foto\abbDonna1.png">
+        <mat-card-content>
+          <p>
+            <h2>{{item.descrizione}}</h2>
+            <br>
+            <h4>{{item.uid[i]}}</h4>
+            <br>
+            <h3>€{{item.costo}}</h3>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <b>
+            <button mat-icon-button style="color:black; "><mat-icon>add_shopping_cart</mat-icon></button>
+          </b>
+        </mat-card-actions>
+      </mat-card>
     </div>
+  </div>
 
+  <!-- Second Column -->
+  <div class="column" >
+    <div *ngFor="let item of right; let i=index"> 
+      <mat-card class="mat-card">
+        <img mat-card-image src="\assets\foto\abbDonna.png">
+        <mat-card-content>
+          <p>
+            <h2>{{item.descrizione}}</h2>
+            <br>
+            <h4>{{item.uid[i]}}</h4>
+            <br>
+            <h3>€{{item.costo}}</h3>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <b>
+            <button mat-icon-button style="color:black; "><mat-icon>add_shopping_cart</mat-icon></button>
+          </b>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,14 +1,18 @@
 <body style="margin-left: 100px; margin-top: 50px;">
 
-<h1 style="font-weight: bold;">Lista Utenti</h1>
-<ol> 
+    <h1 style="font-weight: bold;">Lista Utenti</h1>
 
-    <div *ngFor="let item of listaUtenti | keyvalue"> 
-            <li>
-                ID: <b>{{item.key}}</b> 
-
-            </li>      
-   </div>
+<ol>
+    <div *ngFor="let item of array; let i=index"> 
+        <li>       
+            UID: <b>{{ item.uid[i] }}</b>
+            <br>
+            EMAIL: {{ item.email }}
+            <br>
+            PASSWORD: {{ item.password }}
+        </li>
+    </div>
+  
 </ol>
 
 </body>

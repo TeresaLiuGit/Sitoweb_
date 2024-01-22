@@ -12,10 +12,11 @@ export class HomeComponent implements OnInit{
 
   isAdmin= this.authService.isAdmin
   autenticato= this.login.isAuthenticated
+  isRoleAdmin=this.authService.isRoleAdmin
 
 
   ngOnInit(): void {
-    
+    console.log(this.isRoleAdmin)
   }
 
   onLogout(){

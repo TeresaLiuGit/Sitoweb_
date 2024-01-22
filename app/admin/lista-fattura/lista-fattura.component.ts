@@ -9,41 +9,33 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 export class ListaFatturaComponent implements OnInit{
 
   listaFattura:[{}] | any
-  valoriListaFattura:any
   chiave:any
-  chiaviValoriListaFattura: any;
-  attributi:any
-  fine:any
-
+  valori: any;
+  array:any
 
 constructor(private database:DatabaseService){}
 
+  ngOnInit(): void {
+      this.database.getFattura().subscribe(data=>{
+      console.log(data)
 
-ngOnInit(): void {
-  this.database.getFattura().subscribe(data=>{
-  console.log(data)
+      this.listaFattura=data  
+      this.array=[]
 
-  this.listaFattura=data  
-
-
-    this.valoriListaFattura=(Object.values(this.listaFattura));  
-  //  console.log(this.valoriListaUtenti)
-
-    for(this.chiave in this.listaFattura) {
-      if(this.listaFattura.hasOwnProperty(this.chiave)) {
-      this.chiaviValoriListaFattura= this.listaFattura[this.chiave];    
-      this.fine=((Object.entries(this.chiaviValoriListaFattura)))
-      console.log('ID:'+this.chiave+' VALORI:'+this.fine)
-
-      }
+      Object.keys(this.listaFattura).forEach(chiave => {
         
+          if(this.listaFattura.hasOwnProperty(this.chiave)) {
+          this.valori = this.listaFattura[this.chiave]; 
 
-      }
-
-    
-
-})
-
-
+          const uid= Object.keys(data)
+          const id = this.valori.id;
+          const intestatario= this.valori.intestatario;
+          const descrizione = this.valori.descrizione;
+          const importo = this.valori.importo;
+  
+          // Assuming you want to store the data for each item in an array
+          this.array.push({ uid, id, intestatario, descrizione, importo })          
+        }
+        })
+    })
 }}
-

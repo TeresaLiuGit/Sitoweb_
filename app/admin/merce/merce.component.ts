@@ -16,57 +16,45 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 
 export class MerceComponent {
 
-  body:any
-  bodyAbb:any
-  descrizioneprodotto:any
+  listaMerce:[] | any
 
   constructor(private database:DatabaseService){}
 
 
   onSubmit(form: NgForm){
-    const id= form.value.id
+    const titolo= form.value.id
     const descrizione= form.value.descrizione
     const costo= form.value.costo
 
-    this.database.insertMerce({id:id, descrizione:descrizione, costo:costo}).subscribe(data=>{
+    this.database.insertMerce({titolo, descrizione,costo}).subscribe(data=>{
       console.log(data)
-      this.body=[id, descrizione,costo]
-      console.log(this.body)
 
       })      
-
       form.reset()
 
   }
   
 
     onAbbDonna(form: NgForm){
-      const id= form.value.id
+      const titolo= form.value.id
       const descrizione= form.value.descrizione
       const costo= form.value.costo
 
-    this.database.insertAbbDonna({id:id, descrizione:descrizione, costo:costo}).subscribe((data:any)=>{
-      console.log(data)
-      this.bodyAbb=[id, descrizione,costo]
-      console.log(this.bodyAbb)
-
-
-      })  
+      this.database.insertAbbDonna({titolo, descrizione,costo}).subscribe((data:any)=>{
+        console.log(data)
+        })  
     }
 
+
+
     onAbbUomo(form: NgForm){
-      const id= form.value.id
+      const titolo= form.value.id
       const descrizione= form.value.descrizione
       const costo= form.value.costo
   
-      this.database.insertAbbUomo({id:id, descrizione:descrizione, costo:costo}).subscribe((data:any)=>{
+      this.database.insertAbbUomo({titolo, descrizione,costo}).subscribe((data:any)=>{
         console.log(data)
-        this.bodyAbb=[id, descrizione,costo]
-        console.log(this.bodyAbb)
-  
         })
-  
-
     }
 
 }

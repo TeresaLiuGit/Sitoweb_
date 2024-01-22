@@ -2,6 +2,8 @@ import { Component, Injectable, OnInit } from '@angular/core';
 
 
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/auth/auth.service';
+import { DatabaseService } from 'src/app/servizi/database.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,18 +15,31 @@ import { NgForm } from '@angular/forms';
 
 export class LoginComponent{
 
+  admin='-Nol12CGDJJSgzwYuWfv'
   isAuthenticated=false
 
+
+
+  constructor(private authService:AuthService, private database:DatabaseService){}
 
 
   onSubmit(form: NgForm){
     console.log(this.isAuthenticated)
     const email= form.value.email
     const password= form.value.password
+    
+    this.database.insertUtente({email:email, password:password}).subscribe((data:any)=>{
+      console.log(data)
 
-    console.log(email, password)
+      const uid= Object.keys(data)[0]
+      console.log(uid)
+
+      
+    })
+
     this.isAuthenticated=true
-    console.log(this.isAuthenticated)
+
+    form.reset()
 
   }
 

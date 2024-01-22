@@ -1,13 +1,23 @@
 <body style="margin-left: 100px; margin-top: 50px;">
 
-    <h1 style="font-weight: bold;">Lista Fatture</h1>
+    <h1 style="font-weight: bold;">Lista Fattura</h1>
 
 <ol>
-    <div *ngFor="let item of listaFattura | keyvalue"> 
+    <div *ngFor="let item of array; let i=index"> 
         <li>       
-            ID: <b>{{item.key}}</b> 
-       </li>
+            UID: <b>{{ item.uid[i] }}</b>
+            <br>
+            ID: {{ item.id }}
+            <br>
+            INTESTATARIO: {{ item.intestatario }}
+            <br>
+            DESCRIZIONE: {{ item.descrizione }}       
+            <br>
+            IMPORTO: €{{ item.importo }}
+        </li>
     </div>
+  
 </ol>
 
 </body>
+

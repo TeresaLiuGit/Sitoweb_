@@ -3,7 +3,6 @@ import { RegistrazioneComponent } from 'src/app/componenti/registrazione/registr
 import { DatabaseService } from 'src/app/servizi/database.service';
 
 
-@Injectable({ providedIn: 'root' })
 @Component({
   selector: 'app-utenti',
   templateUrl: './utenti.component.html',
@@ -11,43 +10,31 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 })
 export class UtentiComponent implements OnInit {
 
-  listaUtenti:[{}] | any
-  valoriListaUtenti:any
+  listaUtente:[{}] | any
   chiave:any
-  chiaviValoriListaUtenti: any;
-  attributi:any
-  fine:any
-
+  valori: any;
+  array:any
 
 constructor(private database:DatabaseService){}
-
 
   ngOnInit(): void {
       this.database.getUtente().subscribe(data=>{
       console.log(data)
 
-      this.listaUtenti=data  
+      this.listaUtente=data  
+      this.array=[]
 
-
-        this.valoriListaUtenti=(Object.values(this.listaUtenti));  
-      //  console.log(this.valoriListaUtenti)
-
-        for(this.chiave in this.listaUtenti) {
-          if(this.listaUtenti.hasOwnProperty(this.chiave)) {
-          this.chiaviValoriListaUtenti= this.listaUtenti[this.chiave];    
-          this.fine=((Object.entries(this.chiaviValoriListaUtenti
-        )))
-          console.log('ID:'+this.chiave+' VALORI:'+this.fine)
-
-          }
-            
-
-          }
-
+        for(this.chiave in this.listaUtente) {
         
+          if(this.listaUtente.hasOwnProperty(this.chiave)) {
+          this.valori = this.listaUtente[this.chiave]; 
 
-    })
-    
+          const uid= Object.keys(data)
+          const email = this.valori.email;
+          const password = this.valori.password;
   
+          this.array.push({ uid, email, password })          
+        }
+        }
+    })
 }}
-

@@ -63,4 +63,10 @@ export class AdminComponent {
       console.log(data)
     })
   }
+
+  attributi(){
+    this.fattura = document.getElementById('idFattura') as HTMLInputElement
+    console.log(this.fattura.values)
+
+  }
 }

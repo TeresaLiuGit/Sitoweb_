@@ -12,14 +12,12 @@ import { MerceComponent } from '../merce/merce.component';
 export class ListaMerceComponent implements OnInit{
 
   listaMerce:[{}] | any
-  valoriListaMerce:any
   chiave:any
-  chiaviValoriListaMerce: any;
-  attributi:any
-  fine:any
+  valori: any;
+  array:any
 
 
-constructor(private database:DatabaseService){}
+constructor(private database:DatabaseService, private merce:MerceComponent){}
 
 
   ngOnInit(): void {
@@ -27,26 +25,23 @@ constructor(private database:DatabaseService){}
       console.log(data)
 
       this.listaMerce=data  
-
-
-        this.valoriListaMerce=(Object.values(this.listaMerce));  
-      //  console.log(this.valoriListaMerce)
+      this.array=[]
 
         for(this.chiave in this.listaMerce) {
-          if(this.listaMerce.hasOwnProperty(this.chiave)) {
-          this.chiaviValoriListaMerce = this.listaMerce[this.chiave];    
-          this.fine=((Object.entries(this.chiaviValoriListaMerce)))
-          console.log('ID:'+this.chiave+' VALORI:'+this.fine)
-
-          }
-            
-
-          }
-
         
+          if(this.listaMerce.hasOwnProperty(this.chiave)) {
+          this.valori = this.listaMerce[this.chiave]; 
+          //console.log(this.valori)
 
-    })
-    
+          const uid= Object.keys(data)
+          const id = this.valori.id;
+          const descrizione = this.valori.descrizione;
+          const costo = this.valori.costo;
   
+          // Assuming you want to store the data for each item in an array
+          this.array.push({ uid, id, descrizione, costo })          
+        }
+        }
+    })
 }}
 

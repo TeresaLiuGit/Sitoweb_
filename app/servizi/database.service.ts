@@ -74,7 +74,7 @@ export class DatabaseService {
 
   //FATTURA
   insertFattura(body:{}){
-    return this.http.post(this.url+'fattura.json',body)
+    return this.http.post(this.url+'fattura.json', body)
   }
   getFattura(){
     return this.http.get(this.url+'fattura.json')

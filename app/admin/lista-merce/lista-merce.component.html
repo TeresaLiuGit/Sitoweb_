@@ -3,11 +3,17 @@
     <h1 style="font-weight: bold;">Lista Merce</h1>
 
 <ol>
-    <div *ngFor="let item of listaMerce | keyvalue"> 
+    <div *ngFor="let item of array; let i=index"> 
         <li>       
-             ID: <b>{{item.key}}</b>
-        </li>
+            UID: <b>{{ item.uid[i] }}</b>
+            <br>
+            ID: {{ item.id }}
+            <br>
+            COSTO: {{ item.costo }}
+            <br>
+            DESCRIZIONE: {{ item.descrizione }}        </li>
     </div>
+  
 </ol>
 
 </body>

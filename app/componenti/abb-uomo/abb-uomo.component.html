@@ -1,1 +1,71 @@
-<p>works</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .column {
+      width: 45%; /* Adjust the width as needed */
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .mat-card {
+      width: 450px; /* Ensure mat-card takes full width of its container */
+      margin-bottom: 30px; /* Adjust spacing between cards as needed */
+    }
+  </style>
+
+
+</head>
+<body>
+  <div class="column">
+
+    <div *ngFor="let item of left; let i=index"> 
+      <mat-card class="mat-card">
+        <img mat-card-image src="\assets\foto\abbUomo.png">
+        <mat-card-content>
+            <h2>{{item.descrizione}}</h2>
+            <h4>{{item.uid[i]}}</h4>
+            <h2>€{{item.costo}}</h2>
+        </mat-card-content>
+        <mat-card-actions>
+          <b>
+            <button mat-icon-button style="color:black; "><mat-icon>add_shopping_cart</mat-icon></button>
+          </b>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Second Column -->
+  <div class="column" >
+    <div *ngFor="let item of right; let i=index"> 
+      <mat-card class="mat-card">
+        <img mat-card-image src="\assets\foto\abbUomo1.png">
+        <mat-card-content>
+          <p>
+            <h2>{{item.descrizione}}</h2>
+            <h4>{{item.uid[i]}}</h4>
+            <h2>€{{item.costo}}</h2>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <b>
+            <button mat-icon-button style="color:black; "><mat-icon>add_shopping_cart</mat-icon></button>
+          </b>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</body>
+</html>
