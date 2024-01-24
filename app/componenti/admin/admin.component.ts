@@ -17,14 +17,13 @@ export class AdminComponent {
   fattura: any;
   labelPosition: 'before' | 'after' = 'after';
   utente: HTMLInputElement | undefined;
-  listaMerce:[{}] | any
+
 
   constructor(private database:DatabaseService){}
 
   stopPropagation(event: { stopPropagation: () => void; }){
     event.stopPropagation();
   }
-
 
       //UTENTE
 
@@ -43,16 +42,17 @@ export class AdminComponent {
   }
 
 
-  
 
     //MERCE
 
   onDeleteMerce(){
     this.prodotto = document.getElementById('idProdotto') as HTMLInputElement
-    this.database.deleteMerce(this.prodotto.value).subscribe(data=>{
-          console.log(data)
+    this.database.deleteMerce(this.fattura.value).subscribe(data=>{
+      console.log(data)
     })
+
   }
+
 
 
     //FATTURE
@@ -64,9 +64,4 @@ export class AdminComponent {
     })
   }
 
-  attributi(){
-    this.fattura = document.getElementById('idFattura') as HTMLInputElement
-    console.log(this.fattura.values)
-
-  }
 }

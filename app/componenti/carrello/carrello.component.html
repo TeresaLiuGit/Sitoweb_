@@ -1,1 +1,24 @@
-<p>carrello works!</p>
+<body style="margin-left: 100px; margin-top: 50px;"*ngIf="ordine.length!=0;else template">
+
+    <h1 style="font-weight: bold;">Carrello</h1>
+
+<ul>
+    <li *ngFor="let item of ordine"> 
+            UID:{{item[0]}}
+            <br>
+            DESCRIZIONE:{{item[1]}}
+            <br>
+            COSTO:{{item[2]}}
+            <br>
+    </li>
+  
+</ul>
+
+<h2 style="font-weight: bold;">TOTALE: {{totale}}</h2>
+<button mat-raised-button type="button" routerLink="homepage" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="inserimento()" >PROCEDI AL PAGAMENTO</button>
+<button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff; margin-left: 50px;" (click)="onEmpty()" routerLink="/homepage">ANNULLA ORDINE</button>
+
+</body>
+<ng-template #template >
+    <h1 style="font-weight: bold;">Carrello Vuoto</h1>
+</ng-template>

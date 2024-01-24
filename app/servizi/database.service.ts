@@ -8,6 +8,7 @@ import { AuthService } from '../auth/auth.service';
 export class DatabaseService {
 
   url='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/'
+  ordine: any[] = []  //array i cui salveremo tutti gli articoli inseriti nel carrello
 
 
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -39,34 +40,26 @@ export class DatabaseService {
   insertAbbDonna(body:{}){
     return this.http.post(this.url+'abbDonna.json',body)
   }
-
   insertAbbUomo(body:{}){
     return this.http.post(this.url+'abbUomo.json',body)
   }
-
   insertMerce(body:{}){
     return this.http.post(this.url+'merce.json',body)
   }
-
   getMerceDonna(){
     return this.http.get(this.url+'abbDonna.json')
   }
-
   getMerceUomo(){
     return this.http.get(this.url+'abbUomo.json')
   }
-
-
   getMerce(){
     return this.http.get(this.url+'merce.json')
   }
-
-  deleteMerce(id:string){
-    console.log(this.url+'merce'+`/${id}.json`)
-    return this.http.delete(this.url+'merce'+`/${id}.json`)
+  deleteMerce(id: string) {
+    return this.http.delete(this.url +'merce'+ `/${id}.json`);
   }
-  patchMerce(id:string, body:{}){
-    return this.http.patch(this.url+'merce'+`/${id}.json`,body)
+  patchMerce(id:string, body:{}, url:string){
+    return this.http.delete(this.url +'merce'+ `/${id}.json`);
   }
 
 
@@ -85,6 +78,31 @@ export class DatabaseService {
   }
   patchFattura(id:string, body:{}){
     return this.http.patch(this.url+'fattura'+`/${id}.json`,body)
+  }
+
+
+  //CARRELLO
+
+  fillOrdine(uid:string, descrizione:string, costo:number){        //PER INSERIRE NEL CARRELLO
+    this.ordine.push([uid, descrizione, costo])
+  }
+
+  deleteItemFromArray(item: any) {
+    this.ordine = this.ordine.filter(existingItem => existingItem !== item);    //PER CANCELLARE UN PRODOTTO DALL'ORDINE
+  }
+  
+  emptyOrdine(){              //PER SVUOTARE IL CARRELLO ALLA FINE DI OGNI ORDINE (si procede al pagamento o si annulla)
+    this.ordine = [];
+  }
+
+  obtainOrdine(){
+    return this.ordine
+  }
+  insertOrdine(body:{}){
+    return this.http.post(this.url+'ordine.json', body)
+  }
+  getOrdine(){
+    return this.http.get(this.url+'ordine.json')
   }
 
 

@@ -17,7 +17,7 @@ export class ListaMerceComponent implements OnInit{
   array:any
 
 
-constructor(private database:DatabaseService, private merce:MerceComponent){}
+constructor(private database:DatabaseService){}
 
 
   ngOnInit(): void {
@@ -39,7 +39,9 @@ constructor(private database:DatabaseService, private merce:MerceComponent){}
           const costo = this.valori.costo;
   
           // Assuming you want to store the data for each item in an array
-          this.array.push({ uid, id, descrizione, costo })          
+          this.array.push({ uid, id, descrizione, costo })         
+          console.log(this.array)
+ 
         }
         }
     })

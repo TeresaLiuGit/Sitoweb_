@@ -16,7 +16,7 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 export class LoginComponent{
 
   admin='-Nol12CGDJJSgzwYuWfv'
-  isAuthenticated=false
+  isAuthenticated=true
 
 
 

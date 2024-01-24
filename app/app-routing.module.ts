@@ -13,17 +13,18 @@ import { MerceComponent } from './admin/merce/merce.component';
 import { FattureComponent } from './admin/fatture/fatture.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
 import { authGuard } from './auth/auth.guard';
-import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
 import { FormMerceComponent } from './admin/form-merce/form-merce.component';
 import { FormFatturaComponent } from './admin/form-fattura/form-fattura.component';
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
 import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.component';
+import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent, children:[
     {path:"abbDonna", component: AbbDonnaComponent},
     {path:"abbUomo", component: AbbUomoComponent},
     {path:"homepage", component: HomepageComponent},
+    {path:"carrello", component: CarrelloComponent},
   ]},
 
   {path:"homepage", component: HomepageComponent},
@@ -31,12 +32,10 @@ const routes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"abbDonna", component: AbbDonnaComponent},
   {path:"abbUomo", component: AbbUomoComponent},
-
-
-  {path:"carrello", component: CarrelloComponent, canActivate:[authGuard], children:[
-    {path:"pagamento", component: PagamentoComponent},
-  ]},
-  //Gli utenti possono accedere al carrello e al pagamento solo se autenticati
+  {path:"carrello", component: CarrelloComponent, canActivate:[authGuard]},  //Gli utenti possono accedere al carrello solo se autenticati
+  {path:"pagamento", component: PagamentoComponent},
+   //INSERIRE UNA GUARD PER PERMETTERE DI ACCEDERE AL PAGAMENTO CON ALMENO UN PRODOTTO NEL CARRELLO
+  
 
   {path:"admin", component: AdminComponent, children:[
     {path:"utenti", component: UtentiComponent},
@@ -46,8 +45,6 @@ const routes: Routes = [
     {path:"formMerce", component: FormMerceComponent},
     {path:"listaMerce", component: ListaMerceComponent},
     {path:"listaFattura", component: ListaFatturaComponent},
-
-
 
   ]},
 

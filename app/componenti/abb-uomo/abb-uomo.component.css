@@ -1,5 +1,9 @@
-button{
-    padding:15px;
-    text-align:right;
-
-}
+.column {
+    width: 25%; 
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  .right-button {
+    float: right;
+    color:black; 
+  }

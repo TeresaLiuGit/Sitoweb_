@@ -9,6 +9,11 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 })
 export class FormMerceComponent {
 
+  urlMerce='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/merce'
+  urlAbbDonna='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/abbDonna'
+  urlAbbUomo='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/abbUomo'
+
+
   constructor(private database:DatabaseService){}
 
   onSubmit(form: NgForm){
@@ -19,11 +24,18 @@ export class FormMerceComponent {
       
     console.log({id, descrizione, costo})
 
-    this.database.patchMerce(id, {descrizione, costo})
-    .subscribe((data:any)=>{
+    this.database.patchMerce(id, {descrizione, costo}, this.urlMerce).subscribe((data:any)=>{
       console.log(data)
-      })
+    })
     
+    this.database.patchMerce(id, {descrizione, costo}, this.urlAbbDonna).subscribe((data:any)=>{
+      console.log(data)
+    })
+
+    this.database.patchMerce(id, {descrizione, costo}, this.urlAbbUomo).subscribe((data:any)=>{
+      console.log(data)
+    })
+      
       form.reset()
 
     }

@@ -37,12 +37,14 @@ import { UtentiComponent } from './admin/utenti/utenti.component';
 import { MerceComponent } from './admin/merce/merce.component';
 import { FattureComponent } from './admin/fatture/fatture.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
-import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormMerceComponent } from './admin/form-merce/form-merce.component';
 import { FormFatturaComponent } from './admin/form-fattura/form-fattura.component';
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
 import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.component';
+import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
+
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -58,11 +60,13 @@ import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.compo
     MerceComponent,
     FattureComponent,
     CarrelloComponent,
-    PagamentoComponent,
     FormMerceComponent,
     FormFatturaComponent,
     ListaMerceComponent,
     ListaFatturaComponent,
+    PagamentoComponent
+    
+
   ],
   imports: [
     BrowserModule,
@@ -84,7 +88,7 @@ import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.compo
     MatCardModule,
     MatTableModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
     
   ],
   providers: [RegistrazioneComponent],

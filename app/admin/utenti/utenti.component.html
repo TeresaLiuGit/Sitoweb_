@@ -1,4 +1,4 @@
-<body style="margin-left: 100px; margin-top: 50px;">
+<body style="margin-left: 100px; margin-top: 50px;" *ngIf="array.length!=0;else template">
 
     <h1 style="font-weight: bold;">Lista Utenti</h1>
 
@@ -16,3 +16,6 @@
 </ol>
 
 </body>
+<ng-template #template >
+    <h1 style="font-weight: bold;margin-left: 100px; margin-top: 50px;">Lista Utenti Vuota</h1>
+</ng-template>
