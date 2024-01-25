@@ -18,11 +18,17 @@ import { FormFatturaComponent } from './admin/form-fattura/form-fattura.componen
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
 import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.component';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
+import { AccessoriTelefonoComponent } from './componenti/accessori-telefono/accessori-telefono.component';
+import { FerramentaComponent } from './componenti/ferramenta/ferramenta.component';
+import { PuliziaCasaComponent } from './componenti/pulizia-casa/pulizia-casa.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent, children:[
     {path:"abbDonna", component: AbbDonnaComponent},
     {path:"abbUomo", component: AbbUomoComponent},
+    {path:"accessori", component: AccessoriTelefonoComponent},
+    {path:"ferramenta", component: FerramentaComponent},
+    {path:"pulizia", component: PuliziaCasaComponent},
     {path:"homepage", component: HomepageComponent},
     {path:"carrello", component: CarrelloComponent},
   ]},

@@ -70,9 +70,11 @@ textarea {
     <p>Selezionare la categoria di merce:</p>
 
     <button mat-button type="button" (click)="onAbbDonna(inserimentoMerce)">Abbigliamento Donna</button>
+    <button mat-button type="button" style="margin-left: 30px;" (click)="onAbbUomo(inserimentoMerce)">Abbigliamento Uomo</button>
+    <button mat-button type="button" style="margin-left: 30px;" (click)="onAccessorio(inserimentoMerce)">Accessorio Telefono</button>
+    <button mat-button type="button" style="margin-left: 30px;" (click)="onPulizia(inserimentoMerce)">Pulizia Casa</button>
     <br>
-    <button mat-button type="button" (click)="onAbbUomo(inserimentoMerce)">Abbigliamento Uomo</button>
-    <br>
+    <button mat-button type="button" (click)="onFerramenta(inserimentoMerce)">Ferramenta</button>
     <br>
     <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(inserimentoMerce)">INSERISCI</button>
     

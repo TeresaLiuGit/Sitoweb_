@@ -6,20 +6,23 @@
     
     <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
     
-      <input type="email" name="email" placeholder="Email" autocomplete="off" value="submit"  ngModel required>
-      <input type="password" name="password" placeholder="Password" autocomplete="off" value="submit"  ngModel required>
-      <br>
-      <button type="submit"  [disabled]="!loginform.valid">ACCEDI</button>
-      <button type="button" routerLink="">HOME</button>
+      <p style="color:#fff; margin-left: 70px; font-size:medium;">Email</p>
+      <input type="email"  placeholder="utente@gmail.com" required>
+      <p style="color:#fff; margin-left: 70px; font-size:medium;">Password</p>
+      <input type="password" placeholder="Password" autocomplete="off">  
+      <button type="submit" style="margin-top: 40px;" [disabled]="!loginform.valid">ACCEDI</button>
+      <button type="button" routerLink="/homepage">HOME</button>
     
     
     </form>
     </div>
-    <div *ngIf="isAuthenticated==true">
+    <div *ngIf="isAuthenticated==true;">
       <p class="login-message">
-        Login effettuato
+        Login effettuato con successo!
       </p>
     </div>
-  
-  
+
+
+  </div>
+</body>
   

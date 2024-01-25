@@ -1,0 +1,89 @@
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box; display: flex; justify-content: space-around;">
+  
+    <!-- First Column -->
+  
+    <div class="column">
+  
+      <div *ngFor="let item of part1, let j=index">
+        <mat-card class="mat-card" style="width: 100%; padding: 8px; margin-bottom: 15px; height: 30%;">
+          <img mat-card-image src="\assets\foto\cover.jpg" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+          <mat-card-content>
+            <h2>{{ item.descrizione }}</h2>
+            {{uidPart1[j]}}      
+            <h2>€{{ item.costo }}</h2>
+            </mat-card-content>
+          <mat-card-actions>
+            <b>
+              <button mat-icon-button style="color:black;" (click)="aggiungi(uidPart1[j], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+            </b>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+  
+    </div>
+      <!-- Second Column -->
+    <div class="column" >
+      <div *ngFor="let item of part2, let i=index"> 
+  
+        <mat-card class="mat-card" style="width: 100%;padding: 8px; margin-bottom: 15px; height: 30%;">
+          <img mat-card-image src="\assets\foto\caricatore.jpg"style="width: 100%;padding: 8px; margin-bottom: 15px;">
+          <mat-card-content>
+          <h2>{{ item.descrizione }}</h2>
+          {{uidPart2[i]}}      
+          <h2>€{{ item.costo }}</h2>
+          </mat-card-content>
+          <mat-card-actions>
+            <b>
+              <button mat-icon-button style="color:black;" (click)="aggiungi(uidPart2[i], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+            </b>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  
+  
+    <!-- Third Column -->
+    <div class="column" >
+      <div *ngFor="let item of part3, let k=index"> 
+  
+        <mat-card class="mat-card" style="width: 100%;padding: 8px; margin-bottom: 15px; height: 30%;">
+          <img mat-card-image src="\assets\foto\cover.jpg" style="width: 100%;padding: 8px; margin-bottom: 15px;">
+          <mat-card-content>
+            <h2>{{ item.descrizione }}</h2>
+            {{uidPart3[k]}}      
+            <h2>€{{ item.costo }}</h2>
+          </mat-card-content>
+        <mat-card-actions>
+            <b>
+              <button mat-icon-button style="color:black;" (click)="aggiungi(uidPart3[k], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+            </b>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  
+  
+  
+    <!-- Fourth Column -->
+    <div class="column" >
+      <div *ngFor="let item of part4, let t=index"> 
+  
+        <mat-card class="mat-card" style="width: 100%;padding: 8px; margin-bottom: 15px; height: 30%;">
+          <img mat-card-image src="\assets\foto\caricatore.jpg" style="width: 100%;padding: 8px; margin-bottom: 15px;">
+          <mat-card-content>
+            <h2>{{ item.descrizione }}</h2>
+            {{uidPart4[t]}}      
+            <h2>€{{ item.costo }}</h2>
+          </mat-card-content>
+        <mat-card-actions>
+            <b>
+              <button mat-icon-button style="color:black;" (click)="aggiungi(uidPart4[t], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+            </b>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  
+  
+  </body>
+  

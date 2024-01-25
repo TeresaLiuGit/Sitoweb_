@@ -15,10 +15,11 @@
 </ul>
 
 <h2 style="font-weight: bold;">TOTALE: {{totale}}</h2>
-<button mat-raised-button type="button" routerLink="homepage" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="inserimento()" >PROCEDI AL PAGAMENTO</button>
+<button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="inserimento()" routerLink="/pagamento">PROCEDI AL PAGAMENTO</button>
 <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff; margin-left: 50px;" (click)="onEmpty()" routerLink="/homepage">ANNULLA ORDINE</button>
 
 </body>
 <ng-template #template >
-    <h1 style="font-weight: bold;">Carrello Vuoto</h1>
+    <h1 style="font-weight: bold; margin-left: 100px; margin-top: 50px;">Carrello Vuoto</h1>
+
 </ng-template>

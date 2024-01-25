@@ -43,6 +43,10 @@ import { FormFatturaComponent } from './admin/form-fattura/form-fattura.componen
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
 import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.component';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
+import { AccessoriTelefonoComponent } from './componenti/accessori-telefono/accessori-telefono.component';
+import { FerramentaComponent } from './componenti/ferramenta/ferramenta.component';
+import { ArredamentoComponent } from './componenti/arredamento/arredamento.component';
+import { PuliziaCasaComponent } from './componenti/pulizia-casa/pulizia-casa.component';
 
 
 @NgModule({
@@ -64,7 +68,11 @@ import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
     FormFatturaComponent,
     ListaMerceComponent,
     ListaFatturaComponent,
-    PagamentoComponent
+    PagamentoComponent,
+    AccessoriTelefonoComponent,
+    FerramentaComponent,
+    ArredamentoComponent,
+    PuliziaCasaComponent
     
 
   ],

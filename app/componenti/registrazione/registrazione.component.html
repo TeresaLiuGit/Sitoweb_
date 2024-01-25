@@ -6,12 +6,12 @@
     
     <form #registrazioneform="ngForm" (ngSubmit)="onSubmit(registrazioneform)">
     
-      <input type="email" name="email" id="email" placeholder="Email" autocomplete="off" value="submit" ngModel required>
-      <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" value="submit"  ngModel required>
-      <br>
-      <a routerLink="/login" style="margin-left: 80px; text-align: center; color: #fff;">Hai già un account? Accedi</a>
-      <button type="submit"  [disabled]="!registrazioneform.valid">INVIA</button>
-      <button type="button" routerLink="">HOME</button>
+      <p style="color:#fff; margin-left: 70px; font-size:medium;">Email</p>
+      <input type="email"  placeholder="utente@gmail.com" required>
+      <p style="color:#fff; margin-left: 70px; font-size:medium;">Password</p>
+      <input type="password" placeholder="Password" autocomplete="off">  
+      <button type="submit" style="margin-top: 40px;" [disabled]="!registrazioneform.valid">ACCEDI</button>
+      <button type="button" routerLink="/homepage">HOME</button>
     
     
     </form>

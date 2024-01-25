@@ -57,6 +57,35 @@ export class MerceComponent {
         })
     }
 
+    onAccessorio(form: NgForm){
+      const titolo= form.value.id
+      const descrizione= form.value.descrizione
+      const costo= form.value.costo
+  
+      this.database.insertAccessorio({titolo, descrizione,costo}).subscribe((data:any)=>{
+        console.log(data)
+        })
+    }
+    onPulizia(form: NgForm){
+      const titolo= form.value.id
+      const descrizione= form.value.descrizione
+      const costo= form.value.costo
+  
+      this.database.insertPulizia({titolo, descrizione,costo}).subscribe((data:any)=>{
+        console.log(data)
+        })
+    }
+    onFerramenta(form: NgForm){
+      const titolo= form.value.id
+      const descrizione= form.value.descrizione
+      const costo= form.value.costo
+  
+      this.database.insertFerramenta({titolo, descrizione,costo}).subscribe((data:any)=>{
+        console.log(data)
+        })
+    }
+
+
 }
 
 

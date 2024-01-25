@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagamento',
   templateUrl: './pagamento.component.html',
   styleUrls: ['./pagamento.component.css']
 })
-export class PagamentoComponent {
+export class PagamentoComponent{
 
+  constructor(private router: Router){}
+  
+  okk:boolean | undefined
+
+  ok(){
+    this.okk=true
+
+  }
+
+  navigateToNewRoute(): void {
+    setTimeout(() => {
+      this.router.navigate(['/homepage']);
+    }, 1000); // 2000 milliseconds (2 seconds)
+  }
+  
 }

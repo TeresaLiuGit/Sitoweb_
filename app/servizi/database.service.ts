@@ -106,5 +106,53 @@ export class DatabaseService {
   }
 
 
+  //ACCESSORI TELEFONO
 
+  insertAccessorio(body:{}){
+    return this.http.post(this.url+'accessoriTelefono.json', body)
+  }
+  getAccessorio(){
+    return this.http.get(this.url+'accessoriTelefono.json')
+  }
+  deleteAccessorio( id:string){
+    console.log(this.url+'accessoriTelefono'+`/${id}.json`)
+    return this.http.delete(this.url+'accessoriTelefono'+`/${id}.json`)
+  }
+  patchAccessorio(id:string, body:{}){
+    return this.http.patch(this.url+'accessoriTelefono'+`/${id}.json`,body)
+  }
+
+    //PULIZIA CASA
+
+    insertPulizia(body:{}){
+      return this.http.post(this.url+'pulizia.json', body)
+    }
+    getPulizia(){
+      return this.http.get(this.url+'pulizia.json')
+    }
+    deletePulizia( id:string){
+      console.log(this.url+'pulizia'+`/${id}.json`)
+      return this.http.delete(this.url+'pulizia'+`/${id}.json`)
+    }
+    patchPulizia(id:string, body:{}){
+      return this.http.patch(this.url+'pulizia'+`/${id}.json`,body)
+    }
+
+      //ACCESSORI TELEFONO
+
+  insertFerramenta(body:{}){
+    return this.http.post(this.url+'ferramenta.json', body)
+  }
+  getFerramenta(){
+    return this.http.get(this.url+'ferramenta.json')
+  }
+  deleteFerramenta( id:string){
+    console.log(this.url+'ferramenta'+`/${id}.json`)
+    return this.http.delete(this.url+'ferramenta'+`/${id}.json`)
+  }
+  patchFerramenta(id:string, body:{}){
+    return this.http.patch(this.url+'ferramenta'+`/${id}.json`,body)
+  }
+
+  
 }

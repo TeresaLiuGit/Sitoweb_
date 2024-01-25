@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 
 
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DatabaseService } from 'src/app/servizi/database.service';
 @Component({
@@ -16,14 +16,12 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 export class LoginComponent{
 
   admin='-Nol12CGDJJSgzwYuWfv'
-  isAuthenticated=true
-
-
+  isAuthenticated=false
 
   constructor(private authService:AuthService, private database:DatabaseService){}
 
 
-  onSubmit(form: NgForm){
+    onSubmit(form: NgForm){
     console.log(this.isAuthenticated)
     const email= form.value.email
     const password= form.value.password
@@ -33,8 +31,6 @@ export class LoginComponent{
 
       const uid= Object.keys(data)[0]
       console.log(uid)
-
-      
     })
 
     this.isAuthenticated=true
