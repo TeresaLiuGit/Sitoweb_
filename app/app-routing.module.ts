@@ -31,6 +31,7 @@ const routes: Routes = [
     {path:"pulizia", component: PuliziaCasaComponent},
     {path:"homepage", component: HomepageComponent},
     {path:"carrello", component: CarrelloComponent},
+    
   ]},
 
   {path:"homepage", component: HomepageComponent},
@@ -43,7 +44,7 @@ const routes: Routes = [
    //INSERIRE UNA GUARD PER PERMETTERE DI ACCEDERE AL PAGAMENTO CON ALMENO UN PRODOTTO NEL CARRELLO
   
 
-  {path:"admin", component: AdminComponent, children:[
+  {path:"admin", component: AdminComponent,canActivateChild:[authGuard], children:[
     {path:"utenti", component: UtentiComponent},
     {path:"merce", component: MerceComponent},
     {path:"fatture", component: FattureComponent},

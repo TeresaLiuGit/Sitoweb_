@@ -15,6 +15,8 @@ export class CarrelloComponent implements OnInit{
   array:any
   costoProdotto:any
   totale=0
+  punti=0
+  quantity:1 | any
 
   ordine= this.database.ordine
   
@@ -29,13 +31,14 @@ constructor(private database:DatabaseService){}
 
 
   for (let i = 0; i < this.ordine.length; i++) {
-  this.costoProdotto.push(this.ordine[i][2]);
+  this.costoProdotto.push(this.ordine[i][2]*this.quantity[i]);
   console.log(this.costoProdotto)
   }
 
   this.totale = this.costoProdotto.reduce((acc: any, costo: any) => acc + costo, 0);
   this.totale = +this.totale.toFixed(2);
-  console.log(this.totale)
+  this.punti= this.totale/15
+  this.punti=Math.floor(this.punti)
 
   }
 
@@ -44,12 +47,10 @@ constructor(private database:DatabaseService){}
 inserimento(){
   const ordine= this.database.ordine
   const totale=this.totale
-  this.database.insertOrdine({ordine,totale})
+  this.database.insertOrdine({ordine,totale}).subscribe(data=>{
+    console.log(data)
+  })
 }
-
-
-
-
 
 onEmpty(){
   this.database.emptyOrdine()

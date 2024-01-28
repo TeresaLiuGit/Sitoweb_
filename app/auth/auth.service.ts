@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../modelli/user.model';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../componenti/login/login.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isAdmin= true
+  admin= true
   urlLogin='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBiliEhIkv-rMt2e9I7v135lMTViBjkNyQ'
   urlRegistrazione='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBiliEhIkv-rMt2e9I7v135lMTViBjkNyQ'
   user: User | any
@@ -28,18 +29,12 @@ export class AuthService {
 
   }
 
-  isRoleAdmin(){
-    return this.isAdmin
-  }
-
   getEmail(url:string){
     return this.http.get(`/${url}?auth=${this.user.email}`)
   }
 
 
   logout(){
-    this.user=null
-    localStorage.removeItem('user')
     this.router.navigate(['/login'])
   }
 

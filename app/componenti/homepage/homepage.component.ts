@@ -9,8 +9,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HomepageComponent {
   constructor(private authService: AuthService){}
 
-  isAdmin= this.authService.isAdmin
-
 
   ngOnInit(): void {
     

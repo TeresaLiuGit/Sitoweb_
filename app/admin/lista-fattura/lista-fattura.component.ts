@@ -22,20 +22,17 @@ constructor(private database:DatabaseService){}
       this.listaFattura=data  
       this.array=[]
 
-      Object.keys(this.listaFattura).forEach(chiave => {
+      for(this.chiave in this.listaFattura) {
         
-          if(this.listaFattura.hasOwnProperty(this.chiave)) {
-          this.valori = this.listaFattura[this.chiave]; 
+        if(this.listaFattura.hasOwnProperty(this.chiave)) {
+        this.valori = this.listaFattura[this.chiave]; 
 
-          const uid= Object.keys(data)
-          const id = this.valori.id;
-          const intestatario= this.valori.intestatario;
-          const descrizione = this.valori.descrizione;
-          const importo = this.valori.importo;
-  
-          // Assuming you want to store the data for each item in an array
-          this.array.push({ uid, id, intestatario, descrizione, importo })          
-        }
-        })
+        const uid= Object.keys(data)
+        const email = this.valori.email;
+        const password = this.valori.password;
+
+        this.array.push({ uid, email, password })          
+      }
+      }        
     })
 }}

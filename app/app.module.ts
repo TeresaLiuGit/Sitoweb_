@@ -72,7 +72,7 @@ import { PuliziaCasaComponent } from './componenti/pulizia-casa/pulizia-casa.com
     AccessoriTelefonoComponent,
     FerramentaComponent,
     ArredamentoComponent,
-    PuliziaCasaComponent
+    PuliziaCasaComponent,
     
 
   ],

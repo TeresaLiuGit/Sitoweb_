@@ -6,12 +6,16 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class DatabaseService {
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   url='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/'
   ordine: any[] = []  //array i cui salveremo tutti gli articoli inseriti nel carrello
+  risultato: any;
 
+  setRisultato(data: any) {
+    this.risultato = data;
+  }
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
 
 
   //UTENTE
@@ -59,7 +63,7 @@ export class DatabaseService {
     return this.http.delete(this.url +'merce'+ `/${id}.json`);
   }
   patchMerce(id:string, body:{}, url:string){
-    return this.http.delete(this.url +'merce'+ `/${id}.json`);
+    return this.http.patch(this.url+'merce'+`/${id}.json`,body)
   }
 
 
@@ -83,15 +87,15 @@ export class DatabaseService {
 
   //CARRELLO
 
-  fillOrdine(uid:string, descrizione:string, costo:number){        //PER INSERIRE NEL CARRELLO
+  fillOrdine(uid:string, descrizione:string, costo:number){                       //PER INSERIRE NEL CARRELLO
     this.ordine.push([uid, descrizione, costo])
   }
 
   deleteItemFromArray(item: any) {
-    this.ordine = this.ordine.filter(existingItem => existingItem !== item);    //PER CANCELLARE UN PRODOTTO DALL'ORDINE
+    this.ordine = this.ordine.filter(existingItem => existingItem !== item);      //PER CANCELLARE UN PRODOTTO DALL'ORDINE
   }
   
-  emptyOrdine(){              //PER SVUOTARE IL CARRELLO ALLA FINE DI OGNI ORDINE (si procede al pagamento o si annulla)
+  emptyOrdine(){                                                                     //PER SVUOTARE IL CARRELLO ALLA FINE DI OGNI ORDINE (si procede al pagamento o si annulla)
     this.ordine = [];
   }
 

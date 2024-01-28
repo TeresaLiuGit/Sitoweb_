@@ -20,7 +20,7 @@ export class PagamentoComponent{
   navigateToNewRoute(): void {
     setTimeout(() => {
       this.router.navigate(['/homepage']);
-    }, 1000); // 2000 milliseconds (2 seconds)
+    }, 1000); 
   }
   
 }

@@ -22,6 +22,7 @@
   text-align: center;
 }
 
+
 @media only screen and (max-width: 620px) {
   /* For mobile phones: */
   .main, .right {
@@ -33,24 +34,32 @@
 <body style="font-family:Verdana;color:black;">
     
 <div style="background: linear-gradient(237deg, #005ce6,#ff0000);padding:15px;text-align:center;">
+  <img src="\assets\foto\logo1.jpg" style="width:40px; height:40px;">
 
-  <button mat-button routerLink="" style="font-size:xx-large;color: #e5e5e5;">
-    <img src="\assets\foto\logo1.jpg" style="width:40px; height:40px; margin-right:0;">
+  <button mat-button routerLink="/homepage" style="font-size:xx-large;color: #fff; margin-bottom: 30px; margin-top: 20px;">
     MAXI VIP LIU
   </button>
 
 </div>
 
 <mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened style="background-color:#f2f2f2;">
+  <mat-drawer mode="side" opened style="background-color:#f2f2f2; width: 250px">
 
     <mat-list role="list">
 
-      <mat-list-item class="h2" role="listitem" routerLink="/homepage"><mat-icon>home</mat-icon>HOME</mat-list-item>
+      <mat-list-item role="listitem" style="margin-left: 40px;margin-top: 20px;" routerLink="/homepage">
+        <h2>
+          <mat-icon>home</mat-icon>
+          HOME
+        </h2>
+      </mat-list-item>
 
 
-      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="utente">
-          <mat-icon>person</mat-icon>UTENTE
+      <mat-list-item role="listitem" style="margin-left: 40px;" [matMenuTriggerFor]="utente">
+        <h2>
+          <mat-icon>person</mat-icon>
+          UTENTE
+        </h2>
           <mat-menu #utente="matMenu" style="color: #e5e5e5;">
             <button mat-menu-item routerLink="utenti">Lista Utenti</button>
             <button mat-menu-item [matMenuTriggerFor]="menuUtente">Elimina Utente</button>
@@ -69,8 +78,11 @@
 
 
 
-      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="merce">
-          <mat-icon>inventory_2</mat-icon>MERCE
+      <mat-list-item role="listitem" style="margin-left: 40px;"  [matMenuTriggerFor]="merce">
+        <h2>
+          <mat-icon>inventory_2</mat-icon>
+          MERCE
+        </h2>
           <mat-menu #merce="matMenu" style="color: #e5e5e5;">
             <button mat-menu-item routerLink="listaMerce">Lista Merce</button>
             <button mat-menu-item routerLink="merce">Inserisci Merce</button>
@@ -93,8 +105,11 @@
 
 
         
-      <mat-list-item class="h2" role="listitem" [matMenuTriggerFor]="fattura">
-          <mat-icon>receipt_long</mat-icon>FATTURE
+      <mat-list-item role="listitem" style="margin-left: 40px;"  [matMenuTriggerFor]="fattura">
+        <h2>
+          <mat-icon>receipt_long</mat-icon>
+          FATTURE
+        </h2>
 
           <mat-menu #fattura="matMenu" style="color: #e5e5e5;">
             <button mat-menu-item routerLink="listaFattura">Lista Fatture</button>

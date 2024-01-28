@@ -40,7 +40,6 @@ constructor(private database:DatabaseService){}
   
           // Assuming you want to store the data for each item in an array
           this.array.push({ uid, id, descrizione, costo })         
-          console.log(this.array)
  
         }
         }

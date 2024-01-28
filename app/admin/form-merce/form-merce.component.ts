@@ -28,14 +28,6 @@ export class FormMerceComponent {
       console.log(data)
     })
     
-    this.database.patchMerce(id, {descrizione, costo}, this.urlAbbDonna).subscribe((data:any)=>{
-      console.log(data)
-    })
-
-    this.database.patchMerce(id, {descrizione, costo}, this.urlAbbUomo).subscribe((data:any)=>{
-      console.log(data)
-    })
-      
       form.reset()
 
     }

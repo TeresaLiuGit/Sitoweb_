@@ -1,6 +1,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
 <style>
 * {
   box-sizing: border-box;
@@ -30,40 +32,42 @@
 }
 </style>
 </head>
-<body style="font-family:Verdana;color:black;">
+<body style="font-family:Verdana, Geneva, Tahoma, sans-serif;color:black;">
     
 <div style="background: linear-gradient(237deg, #005ce6,#ff0000);padding:15px;text-align:center;">
 
-  <button mat-button routerLink="" style="font-size:xx-large;color: #e5e5e5;">
+
+  <button mat-button routerLink="/homepage" style="font-size:xx-large;color: #fff;margin-bottom: 5px;">
     <img src="\assets\foto\logo1.jpg" style="width:40px; height:40px; margin-right:0;">
     MAXI VIP LIU
-    
   </button>
 <br>
-<div>
-  <button mat-icon-button style="color: #e5e5e5;"><mat-icon>search</mat-icon></button>
-  <button mat-icon-button routerLink="carrello" style="color: #e5e5e5;"><mat-icon>shopping_cart_checkout</mat-icon></button>
-  <button mat-icon-button [matMenuTriggerFor]="persona" style="color: #e5e5e5;">
 
-     <mat-menu #persona="matMenu" style="color: #e5e5e5;">
-       <button mat-menu-item routerLink="registrazione"><mat-icon>how_to_reg</mat-icon>Registrati</button>
-       <button mat-menu-item routerLink="login"><mat-icon>login</mat-icon>Login</button>
-       <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
-     </mat-menu>
-    <mat-icon>person</mat-icon>
-  </button>
+<button mat-icon-button routerLink="carrello" style="color: #e5e5e5;"><mat-icon>shopping_cart_checkout</mat-icon></button>
+<button mat-icon-button [matMenuTriggerFor]="persona" style="color: #e5e5e5;">
+
+   <mat-menu #persona="matMenu" style="color: #e5e5e5;">
+     <button mat-menu-item routerLink="registrazione"><mat-icon>how_to_reg</mat-icon>Registrati</button>
+     <button mat-menu-item routerLink="login"><mat-icon>login</mat-icon>Login</button>
+   </mat-menu>
+  <mat-icon>person</mat-icon>
+</button>
+<button mat-icon-button (click)="onLogout()" style="color: #e5e5e5;">
+  <mat-icon>logout</mat-icon>
+</button>
+
+<form #searchform="ngForm" (ngSubmit)="onSearch(searchform)">
+
+  <input type="text" name="prodotto" placeholder="Cerca prodotto..." autocomplete="off" value="submit"  ngModel required>
+  <button type="button" (click)="onSearch(searchform)" >cerca</button>
+</form>
+
   </div>
-
-</div>
-
-
-
-
 
 
 <mat-drawer-container class="example-container">
 
-    <mat-drawer mode="side" opened style="background-color:#f2f2f2;">
+    <mat-drawer mode="side" opened style="background-color:#f2f2f2; font-family: serif;">
         <mat-list role="list">
           <mat-list-item class="h2" role="listitem" routerLink="homepage">HOME</mat-list-item>        
           <mat-list-item class="h2" role="listitem" routerLink="abbDonna">ABBIGLIAMENTO DONNA</mat-list-item>
@@ -72,18 +76,33 @@
           <mat-list-item class="h2" role="listitem" routerLink="pulizia">PULIZIA CASA</mat-list-item>
           <mat-list-item class="h2" role="listitem" routerLink="ferramenta">FERRAMENTA</mat-list-item>
 
-          <button mat-menu-item *ngIf="isRoleAdmin()" routerLink="admin"><mat-icon>settings</mat-icon>ADMIN</button>
+          <button mat-menu-item routerLink="admin"><mat-icon>settings</mat-icon>ADMIN</button>
 
         </mat-list>
      </mat-drawer>
         
     <mat-drawer-content>
 
-      <router-outlet></router-outlet>
-
-      <div style="padding:250px;text-align:center;">
     
+
+      <div style="height: 500px;" *ngIf="trovato==true">
+        <h1 style="font-weight: bold;margin-left: 100px; margin-top: 50px;">Risultato ricerca</h1>
+
+        <mat-card class="mat-card" style="width: 250px; padding: 8px; margin-bottom: 15px; height: 350px; margin-left: 50px;">
+          <img mat-card-image src="\assets\foto\product.png" style="width: 100%; padding: 8px; margin-bottom: 5px;height: 200px;">
+          <mat-card-content>
+           <b><p>{{ descrizione }}<p></b> 
+            <p>{{uid}}</p>
+            <br>
+            <h2>€{{ costo }}</h2>
+          </mat-card-content>
+          
+            <button mat-icon-button style="color:black; position: relative; left: 150px; bottom: 40px;" (click)="aggiungi(uid, descrizione,costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+            
+        </mat-card>
       </div>
+
+      <router-outlet></router-outlet>
   
     </mat-drawer-content>
 </mat-drawer-container>

@@ -1,1 +1,75 @@
-<p>ferramenta works!</p>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box; display: flex; justify-content: space-around;">
+  
+    <!-- First Column -->
+  
+    <div class="column">
+  
+      <div *ngFor="let item of part1, let j=index">
+        <mat-card class="mat-card" style="width: 100%; padding: 8px; margin-bottom: 15px; height: 400px">
+          <img mat-card-image src="\assets\foto\chiodi.png" style="width: 100%; padding: 8px; margin-bottom: 40px;">
+          <mat-card-content>
+            <b><p style="font-size: large;">{{ item.descrizione }}<p></b> 
+             <p style="font-size: small;">{{uidPart1[j]}}      </p>
+             <br>
+             <br>
+             <h2>€{{ item.costo }}</h2>
+           </mat-card-content>
+           <button mat-icon-button style="color:black; position: relative; left: 150px; bottom: 40px;" (click)="aggiungi(uidPart1[j], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+          </mat-card>
+      </div>
+  
+    </div>
+      <!-- Second Column -->
+    <div class="column" >
+      <div *ngFor="let item of part2, let i=index"> 
+        <mat-card class="mat-card" style="width: 100%; padding: 8px; margin-bottom: 15px; height: 400px">
+          <img mat-card-image src="\assets\foto\f2.png" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+          <mat-card-content>
+            <b><p style="font-size: large;">{{ item.descrizione }}<p></b> 
+             <p style="font-size: small;">{{uidPart1[i]}}      </p>
+             <br>
+             <h2>€{{ item.costo }}</h2>
+           </mat-card-content>
+           <button mat-icon-button style="color:black; position: relative; left: 150px; bottom: 40px;" (click)="aggiungi(uidPart1[i], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+          </mat-card>
+      </div>
+    </div>
+  
+  
+    <!-- Third Column -->
+    <div class="column" >
+      <div *ngFor="let item of part3, let k=index"> 
+        <mat-card class="mat-card" style="width: 100%; padding: 8px; margin-bottom: 15px; height: 400px">
+          <img mat-card-image src="\assets\foto\martello.png" style="width: 100%;padding: 8px; margin-bottom: 15px;">
+          <mat-card-content>
+            <b><p style="font-size: large;">{{ item.descrizione }}<p></b> 
+             <p style="font-size: small;">{{uidPart1[k]}}</p>
+             <br>
+             <h2>€{{ item.costo }}</h2>
+           </mat-card-content>
+           <button mat-icon-button style="color:black; position: relative; left: 150px; bottom: 40px;" (click)="aggiungi(uidPart1[k], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+          </mat-card>
+      </div>
+    </div>
+  
+  
+  
+    <!-- Fourth Column -->
+    <div class="column" >
+      <div *ngFor="let item of part4, let t=index"> 
+        <mat-card class="mat-card" style="width: 100%; padding: 8px; margin-bottom: 15px; height: 400px">
+          <img mat-card-image src="\assets\foto\silicone.png" style="width: 100%;padding: 8px; margin-bottom: 30px;">
+          <mat-card-content>
+            <b><p style="font-size: large;">{{ item.descrizione }}<p></b> 
+             <p style="font-size: small;">{{uidPart1[t]}}</p>
+             <br>
+             <h2>€{{ item.costo }}</h2>
+           </mat-card-content>
+           <button mat-icon-button style="color:black; position: relative; left: 150px; bottom: 40px;" (click)="aggiungi(uidPart1[t], item.descrizione, item.costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+          </mat-card>
+      </div>
+    </div>
+  
+  
+  </body>
+  

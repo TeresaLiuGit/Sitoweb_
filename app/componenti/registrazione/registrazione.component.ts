@@ -1,5 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DatabaseService } from 'src/app/servizi/database.service';
 
@@ -10,57 +12,60 @@ import { DatabaseService } from 'src/app/servizi/database.service';
   templateUrl: './registrazione.component.html',
   styleUrls: ['./registrazione.component.css']
 })
-export class RegistrazioneComponent {
+export class RegistrazioneComponent {  
 
   inserito:boolean | undefined 
   listaUtente:[{}] | any
   chiave:any
   valori: any;
   array:any
+  email: string = '';
+  password: string = '';
 
 
+  constructor(private authservice: AuthService, private router: Router, private database:DatabaseService){}
 
-  constructor(private authservice: AuthService, private database:DatabaseService){}
+  navigateToNewRoute(): void {
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 2000); 
+  }
+  
 
   onSubmit(form: NgForm){
-    const nuovaEmail= form.value.email
-    const nuovaPassword= form.value.password
-    this.inserito=true
+    const email= form.value.email
+    const password= form.value.password
 
-    console.log(nuovaEmail, nuovaPassword)
+    this.authservice.signUp({email: email, password: password, returnSecureToken: true}).subscribe(data=>{
+      console.log(data)
+      this.inserito=true
+    })
 
-    this.database.getUtente().subscribe(data=>{
-      this.listaUtente=data  
-      this.array=[]
-
-        for(this.chiave in this.listaUtente) {
-        
-          if(this.listaUtente.hasOwnProperty(this.chiave)) {
-          this.valori = this.listaUtente[this.chiave]; 
-
-          const uid= Object.keys(data)[0]
-          const email = this.valori.email;
-          const password = this.valori.password;
-  
-          this.array.push({ uid, email, password })      
-          
-
-          if(nuovaEmail== this.array.email){
-            console.log('EMAIL GIA ESISTENTE')
-          }
-
-          break
-        }
-    }
-  })
-
-          this.database.insertUtente({email:nuovaEmail, password:nuovaPassword}).subscribe((data:any)=>{
-             console.log(data)
-          })
-
-        
-        }
-      }
+    this.database.insertUtente({email, password}).subscribe(data=>{
+      console.log(email, password)
+    })
     
-//NON FUNZIONA, AGGIUSTARE
+    if (this.isEmailValid(email)==false) {
+      window.alert('Inserire una email valida: utente@gmail.com');
+    }
 
+    if (this.isPasswordValid(password)==false) {
+      window.alert('La password deve essere lunga almeno 6 caratteri e contenere un carattere speciale.');
+    }
+  }
+
+  isEmailValid(email: string): boolean {
+    // Regular expression for a basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  isPasswordValid(password: string): boolean {
+    // Password must be at least 6 characters long and contain a special symbol
+    const passwordRegex = /^(?=.*[A-Za-z0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}$/;
+    return passwordRegex.test(password);
+  }
+
+
+    
+}

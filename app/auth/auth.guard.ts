@@ -9,5 +9,5 @@ export const authGuard: CanActivateFn = () => {
 };
 
 export const authGuardChild: CanActivateChildFn = () => {
-  return inject(AuthService).isAdmin;
+  return inject(AuthService).admin;
 };
