@@ -1,22 +1,28 @@
-<body style="margin-left: 100px; margin-top: 50px;" *ngIf="array.length!=0;else template">
+<h1 style="font-weight: bold;margin-left: 100px; margin-top: 20px;">Lista Merce</h1>
 
-    <h1 style="font-weight: bold;">Lista Merce</h1>
+
+<body style="margin-left: 50px; margin-top: 20px;" *ngIf="length==true;else template">
+
 
 <ol>
+
     <div *ngFor="let item of array; let i=index"> 
-        <li>       
-            UID: <b>{{ item.uid[i] }}</b>
+        <li>     
+            TITOLO: {{ item.titolo }}  
             <br>
-            ID: {{ item.id }}
+            DESCRIZIONE: {{ item.descrizione }}        
             <br>
             COSTO: {{ item.costo }}
             <br>
-            DESCRIZIONE: {{ item.descrizione }}        </li>
+            IMMAGINE:  {{ item.immagine}}
+            <br>
+        </li>
+        <br>
     </div>
-  
 </ol>
 
 </body>
 <ng-template #template >
-    <h1 style="font-weight: bold;margin-left: 100px; margin-top: 50px;">Lista Merce Vuota</h1>
+    <h1 style="font-weight: bold; margin-left: 400px; margin-top: 100px;opacity: 0.6;">Lista Merce Vuota</h1> 
+    <img mat-card-image src="\assets\foto\noBox.png" style="width: 30%;opacity: 0.5;margin-left: 350px;">
 </ng-template>

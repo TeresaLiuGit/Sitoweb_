@@ -1,4 +1,4 @@
-<body style="margin-left: 100px; margin-top: 50px;" *ngIf="array.length!=0;else template">
+<body style="margin-left: 100px; margin-top: 50px;" *ngIf="length==true;else template">
 
     <h1 style="font-weight: bold;">Lista Utenti</h1>
 
@@ -11,11 +11,13 @@
             <br>
             PASSWORD: {{ item.password }}
         </li>
+        <br>
     </div>
   
 </ol>
 
 </body>
 <ng-template #template >
-    <h1 style="font-weight: bold;margin-left: 100px; margin-top: 50px;">Lista Utenti Vuota</h1>
+    <h1 style="font-weight: bold; margin-left: 400px; margin-top: 100px;opacity: 0.6;">Lista Utenti Vuota</h1> 
+    <img mat-card-image src="\assets\foto\noOne.jpg" style="width: 30%;opacity: 0.5;margin-left: 350px;">
 </ng-template>

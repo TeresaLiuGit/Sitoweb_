@@ -32,13 +32,14 @@ export class HomeComponent{
   descrizione:any
   costo:any
   id:any
+  immagine:any
 
 
   onSearch(form:NgForm){
     const prodotto= form.value.prodotto
     console.log(prodotto)
       
-        this.database.getMerce().subscribe(data=>{
+        this.database.getMerce('').subscribe(data=>{
           this.listaMerce=data  
           this.array=[]
     
@@ -52,16 +53,18 @@ export class HomeComponent{
               const id = this.valori.id;
               const descrizione = this.valori.descrizione;
               const costo = this.valori.costo;
+              const immagine= this.valori.immagine
       
               // Assuming you want to store the data for each item in an array
-              this.array.push({ uid, id, descrizione, costo })         
+              this.array.push({ uid, id, descrizione, costo, immagine })         
               
               if(uid===prodotto){
                 this.uid=uid
                 this.descrizione=descrizione
                 this.costo=costo
+                this.immagine= immagine
 
-                this.risultato= this.array.pop({uid, id, descrizione, costo})               
+                this.risultato= this.array.pop({uid, id, descrizione, costo, immagine})               
                 console.log(this.risultato.value)
                 this.trovato=true
                 console.log(this.trovato)
@@ -76,8 +79,8 @@ export class HomeComponent{
 
 
 
-  aggiungi(uid:string, descrizione:string, costo:number) {
-    this.database.fillOrdine(uid, descrizione, costo);
+  aggiungi(uid:string, descrizione:string, costo:number, immagine:any) {
+    this.database.fillOrdine(uid, descrizione, costo, immagine);
     console.log('uid',uid, 'descrizione', descrizione, 'costo', costo)
     
 }

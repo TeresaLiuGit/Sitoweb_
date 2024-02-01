@@ -16,23 +16,41 @@ export class CarrelloComponent implements OnInit{
   costoProdotto:any
   totale=0
   punti=0
-  quantity:1 | any
-
+  cliccked:any
+  ordineok: any[] = []
+  length:any
   ordine= this.database.ordine
   
-
+  imageUrl: string = '';
+  arrayImmagini:any
 
 
 constructor(private database:DatabaseService){}
 
   ngOnInit(): void {
+  
+    this.arrayImmagini=[]
+
     console.log(this.ordine)
+
+
+    for(let i of this.ordine){
+      this.imageUrl= i[3]
+      console.log(this.imageUrl)
+      this.arrayImmagini.push(this.imageUrl)
+    }
+
+
+    if(this.ordine.length!=0){
+      this.length=true
+    }
+    
+
     this.costoProdotto=[]
 
 
   for (let i = 0; i < this.ordine.length; i++) {
-  this.costoProdotto.push(this.ordine[i][2]*this.quantity[i]);
-  console.log(this.costoProdotto)
+  this.costoProdotto.push(this.ordine[i][2]);
   }
 
   this.totale = this.costoProdotto.reduce((acc: any, costo: any) => acc + costo, 0);
@@ -43,13 +61,31 @@ constructor(private database:DatabaseService){}
   }
 
 
+  onDelete(item:{}){
+    var ordine= this.database.ordine
+    console.log(item)
+    const newArray = ordine.filter(object => object !== item);
+    console.log(newArray)
+
+    ordine = [];
+    
+
+    ordine.push(newArray)
+
+    this.ordineok.push(newArray)
+    this.cliccked=true
+  }
+
 
 inserimento(){
   const ordine= this.database.ordine
   const totale=this.totale
-  this.database.insertOrdine({ordine,totale}).subscribe(data=>{
-    console.log(data)
-  })
+
+    this.database.insertOrdine({ordine, totale}).subscribe(data=>{
+      console.log(data)
+    })
+
+
 }
 
 onEmpty(){

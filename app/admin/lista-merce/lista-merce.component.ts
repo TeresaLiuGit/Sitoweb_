@@ -15,34 +15,60 @@ export class ListaMerceComponent implements OnInit{
   chiave:any
   valori: any;
   array:any
-
+  length:any
 
 constructor(private database:DatabaseService){}
 
 
   ngOnInit(): void {
-      this.database.getMerce().subscribe(data=>{
-      console.log(data)
+      this.database.getMerce('').subscribe(data=>{
 
       this.listaMerce=data  
       this.array=[]
 
-        for(this.chiave in this.listaMerce) {
-        
-          if(this.listaMerce.hasOwnProperty(this.chiave)) {
-          this.valori = this.listaMerce[this.chiave]; 
-          //console.log(this.valori)
 
-          const uid= Object.keys(data)
-          const id = this.valori.id;
-          const descrizione = this.valori.descrizione;
-          const costo = this.valori.costo;
-  
-          // Assuming you want to store the data for each item in an array
-          this.array.push({ uid, id, descrizione, costo })         
- 
-        }
-        }
-    })
-}}
+      const reparto= Object.keys(this.listaMerce)
 
+      for(let i in this.listaMerce){
+        const uid= this.listaMerce[i]
+       // console.log(uid)
+        for(let y in uid){
+          const prodotto= uid[y]
+          console.log(prodotto)
+
+          const costo= Object.values(prodotto)[0]
+          console.log(costo)
+
+          const descrizione=Object.values(prodotto)[1]
+          console.log(descrizione)
+
+          const immagine= Object.values(prodotto)[2]
+          console.log(immagine)
+
+          const titolo=Object.values(prodotto)[3]
+          console.log(titolo)
+
+
+          this.array.push({reparto, titolo, descrizione, immagine, costo })
+          console.log(this.array)
+                  if(this.array.length!=0){
+          this.length=true
+        }
+
+
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
+      })
+    }
+  }

@@ -74,9 +74,10 @@
           <mat-list-item class="h2" role="listitem" routerLink="abbUomo">ABBIGLIAMENTO UOMO</mat-list-item>
           <mat-list-item class="h2" role="listitem" routerLink="accessori">ACCESSORI PER TELEFONO</mat-list-item>
           <mat-list-item class="h2" role="listitem" routerLink="pulizia">PULIZIA CASA</mat-list-item>
+          <mat-list-item class="h2" role="listitem" routerLink="arredo">ARREDAMENTO CASA</mat-list-item>
           <mat-list-item class="h2" role="listitem" routerLink="ferramenta">FERRAMENTA</mat-list-item>
 
-          <button mat-menu-item routerLink="admin"><mat-icon>settings</mat-icon>ADMIN</button>
+          <button mat-menu-item routerLink="admin/adminFace"><mat-icon>settings</mat-icon>ADMIN</button>
 
         </mat-list>
      </mat-drawer>
@@ -88,8 +89,8 @@
       <div style="height: 500px;" *ngIf="trovato==true">
         <h1 style="font-weight: bold;margin-left: 100px; margin-top: 50px;">Risultato ricerca</h1>
 
-        <mat-card class="mat-card" style="width: 250px; padding: 8px; margin-bottom: 15px; height: 350px; margin-left: 50px;">
-          <img mat-card-image src="\assets\foto\product.png" style="width: 100%; padding: 8px; margin-bottom: 5px;height: 200px;">
+        <mat-card class="mat-card" style="width: 250px; padding: 8px; margin-bottom: 15px; height:fit-content; margin-left: 50px;">
+          <img mat-card-image [src]="immagine" style="width: 100%; padding: 8px; margin-bottom: 5px;height: 200px;">
           <mat-card-content>
            <b><p>{{ descrizione }}<p></b> 
             <p>{{uid}}</p>
@@ -97,7 +98,7 @@
             <h2>€{{ costo }}</h2>
           </mat-card-content>
           
-            <button mat-icon-button style="color:black; position: relative; left: 150px; bottom: 40px;" (click)="aggiungi(uid, descrizione,costo)"><mat-icon>add_shopping_cart</mat-icon></button>
+            <button mat-icon-button style="color:black; position: relative; left: 150px; bottom: 40px;" (click)="aggiungi(uid, descrizione,costo, immagine)"><mat-icon>add_shopping_cart</mat-icon></button>
             
         </mat-card>
       </div>

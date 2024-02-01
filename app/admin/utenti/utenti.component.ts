@@ -14,6 +14,7 @@ export class UtentiComponent implements OnInit {
   chiave:any
   valori: any;
   array:any
+  length:any
 
 constructor(private database:DatabaseService){}
 
@@ -33,7 +34,13 @@ constructor(private database:DatabaseService){}
           const email = this.valori.email;
           const password = this.valori.password;
   
-          this.array.push({ uid, email, password })          
+          this.array.push({ uid, email, password })        
+          
+          if(this.array.length!=0){
+            this.length=true
+          }
+          
+  
         }
         }
     })

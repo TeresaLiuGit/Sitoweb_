@@ -1,17 +1,20 @@
-<body style="margin-left: 100px; margin-top: 50px;"*ngIf="ordine.length!=0;else template">
+<body style="margin-left: 100px; margin-top: 50px;"*ngIf="length==true;else template">
 
     <h1 style="font-weight: bold;">Carrello</h1>
 
 <ul>
-    <li *ngFor="let item of ordine"> 
-            UID:{{item[0]}}
-            <br>
-            DESCRIZIONE:{{item[1]}}
-            <br>
-            COSTO:{{item[2]}}
-            <br>
-    
+
+    <li *ngFor="let item of ordine; let i=index"> 
+        UID:{{item[0]}}
+        <button mat-icon-button style="color:black;" (click)="onDelete(item)"><mat-icon>delete</mat-icon></button>
+        <br>
+        DESCRIZIONE:{{item[1]}}
+        <br>
+        COSTO:{{item[2]}}
+        <br>
+        <img [src]="arrayImmagini[i]" alt="Your Image" style="width: 110px;height: 120px;">
     </li>
+
   
 </ul>
 

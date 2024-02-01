@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/servizi/database.service';
 
 @Component({
   selector: 'app-pagamento',
@@ -8,12 +9,13 @@ import { Router } from '@angular/router';
 })
 export class PagamentoComponent{
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private database:DatabaseService){}
   
   okk:boolean | undefined
 
   ok(){
     this.okk=true
+    this.database.emptyOrdine()
 
   }
 

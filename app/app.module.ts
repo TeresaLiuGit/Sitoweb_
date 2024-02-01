@@ -35,18 +35,19 @@ import { AdminComponent } from './componenti/admin/admin.component';
 import { HomepageComponent } from './componenti/homepage/homepage.component';
 import { UtentiComponent } from './admin/utenti/utenti.component';
 import { MerceComponent } from './admin/merce/merce.component';
-import { FattureComponent } from './admin/fatture/fatture.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormMerceComponent } from './admin/form-merce/form-merce.component';
-import { FormFatturaComponent } from './admin/form-fattura/form-fattura.component';
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
-import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.component';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
 import { AccessoriTelefonoComponent } from './componenti/accessori-telefono/accessori-telefono.component';
 import { FerramentaComponent } from './componenti/ferramenta/ferramenta.component';
 import { ArredamentoComponent } from './componenti/arredamento/arredamento.component';
 import { PuliziaCasaComponent } from './componenti/pulizia-casa/pulizia-casa.component';
+import { AdminFaceComponent } from './componenti/admin-face/admin-face.component';
+import { ListaOrdineComponent } from './admin/lista-ordine/lista-ordine.component';
+import { FormOrdineComponent } from './admin/form-ordine/form-ordine.component';
+import { ReusableComponent } from './componenti/reusable/reusable.component';
 
 
 @NgModule({
@@ -62,17 +63,18 @@ import { PuliziaCasaComponent } from './componenti/pulizia-casa/pulizia-casa.com
     HomepageComponent,
     UtentiComponent,
     MerceComponent,
-    FattureComponent,
     CarrelloComponent,
     FormMerceComponent,
-    FormFatturaComponent,
     ListaMerceComponent,
-    ListaFatturaComponent,
     PagamentoComponent,
     AccessoriTelefonoComponent,
     FerramentaComponent,
     ArredamentoComponent,
     PuliziaCasaComponent,
+    AdminFaceComponent,
+    ListaOrdineComponent,
+    FormOrdineComponent,
+    ReusableComponent,
     
 
   ],

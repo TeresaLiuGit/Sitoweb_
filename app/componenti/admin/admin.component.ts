@@ -13,19 +13,10 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 })
 export class AdminComponent {
 
-  prodotto: any;
-  fattura: any;
-  labelPosition: 'before' | 'after' = 'after';
-  utente: HTMLInputElement | undefined;
-
 
   constructor(private database:DatabaseService){}
 
-  stopPropagation(event: { stopPropagation: () => void; }){
-    event.stopPropagation();
-  }
-
-      //UTENTE
+  //UTENTE
 
   onListaUtente(){
     this.database.getUtente().subscribe((data:any)=>{
@@ -34,9 +25,8 @@ export class AdminComponent {
   }
 
   onDeleteUtente(){
-    this.utente = document.getElementById('idUtente') as HTMLInputElement
-    console.log(this.utente)
-    this.database.deleteUtente(this.utente.value).subscribe(data=>{
+    const utente = document.getElementById('idUtente') as HTMLInputElement
+    this.database.deleteUtente(utente.value).subscribe(data=>{
       console.log(data)
     })
   }
@@ -46,8 +36,8 @@ export class AdminComponent {
     //MERCE
 
   onDeleteMerce(){
-    this.prodotto = document.getElementById('idProdotto') as HTMLInputElement
-    this.database.deleteMerce(this.fattura.value).subscribe(data=>{
+    const prodotto = document.getElementById('idProdotto') as HTMLInputElement
+    this.database.deleteMerce(prodotto.value).subscribe(data=>{
       console.log(data)
     })
 
@@ -55,11 +45,11 @@ export class AdminComponent {
 
 
 
-    //FATTURE
+    //ORDINE
 
-  onDeleteFatture(){
-    this.fattura = document.getElementById('idFattura') as HTMLInputElement
-    this.database.deleteFattura(this.fattura.value).subscribe(data=>{
+  onDeleteOrdine(){
+    const uidFattura=document.getElementById('idFattura') as HTMLInputElement
+    this.database.deleteOrdine(uidFattura.value).subscribe(data=>{
       console.log(data)
     })
   }

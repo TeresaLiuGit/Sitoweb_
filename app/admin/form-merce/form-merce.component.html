@@ -52,16 +52,16 @@ textarea {
   <form #modificaMerce="ngForm" (ngSubmit)="onSubmit(modificaMerce)">
 
     <label>TITOLO</label>
-    <input type="text" name="id" id="id" value="submit" ngModel required>
+    <input type="text" name="id" id="id" value="submit" autocomplete="off" ngModel required>
 
     <br>
     <br>
     <label>DESCRIZIONE</label>
-    <textarea type="text" name="descrizione" id="descrizione" value="submit" ngModel required></textarea>
+    <textarea type="text" name="descrizione" id="descrizione" value="submit" autocomplete="off" ngModel required></textarea>
 
     <label>COSTO</label>
     <mat-form-field floatLabel="always">
-      <input matInput type="number" name="costo" id="costo" value="submit" placeholder="0" ngModel required>
+      <input matInput type="number" name="costo" id="costo" value="submit" autocomplete="off" placeholder="0" ngModel required>
       <span matTextPrefix>€&nbsp;</span>
     </mat-form-field>
 

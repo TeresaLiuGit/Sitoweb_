@@ -10,17 +10,17 @@ import { AdminComponent } from './componenti/admin/admin.component';
 import { HomepageComponent } from './componenti/homepage/homepage.component';
 import { UtentiComponent } from './admin/utenti/utenti.component';
 import { MerceComponent } from './admin/merce/merce.component';
-import { FattureComponent } from './admin/fatture/fatture.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
 import { authGuard } from './auth/auth.guard';
 import { FormMerceComponent } from './admin/form-merce/form-merce.component';
-import { FormFatturaComponent } from './admin/form-fattura/form-fattura.component';
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
-import { ListaFatturaComponent } from './admin/lista-fattura/lista-fattura.component';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
 import { AccessoriTelefonoComponent } from './componenti/accessori-telefono/accessori-telefono.component';
 import { FerramentaComponent } from './componenti/ferramenta/ferramenta.component';
 import { PuliziaCasaComponent } from './componenti/pulizia-casa/pulizia-casa.component';
+import { AdminFaceComponent } from './componenti/admin-face/admin-face.component';
+import { ArredamentoComponent } from './componenti/arredamento/arredamento.component';
+import { ListaOrdineComponent } from './admin/lista-ordine/lista-ordine.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent, children:[
@@ -29,6 +29,7 @@ const routes: Routes = [
     {path:"accessori", component: AccessoriTelefonoComponent},
     {path:"ferramenta", component: FerramentaComponent},
     {path:"pulizia", component: PuliziaCasaComponent},
+    {path:"arredo", component: ArredamentoComponent},
     {path:"homepage", component: HomepageComponent},
     {path:"carrello", component: CarrelloComponent},
     
@@ -45,13 +46,12 @@ const routes: Routes = [
   
 
   {path:"admin", component: AdminComponent,canActivateChild:[authGuard], children:[
+    {path:"adminFace", component: AdminFaceComponent},
     {path:"utenti", component: UtentiComponent},
     {path:"merce", component: MerceComponent},
-    {path:"fatture", component: FattureComponent},
-    {path:"formFattura", component: FormFatturaComponent },
     {path:"formMerce", component: FormMerceComponent},
     {path:"listaMerce", component: ListaMerceComponent},
-    {path:"listaFattura", component: ListaFatturaComponent},
+    {path:"listaOrdine", component: ListaOrdineComponent},
 
   ]},
 

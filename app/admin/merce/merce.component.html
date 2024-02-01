@@ -51,12 +51,12 @@ textarea {
   <form #inserimentoMerce="ngForm" (ngSubmit)="onSubmit(inserimentoMerce)">
 
     <label>TITOLO</label>
-    <input type="text" name="id" id="id" value="submit" ngModel required>
+    <input type="text" name="id" id="id" value="submit" autocomplete="off" ngModel required>
 
     <br>
     <br>
     <label>DESCRIZIONE</label>
-    <textarea type="text" name="descrizione" id="descrizione" value="submit" ngModel required></textarea>
+    <textarea type="text" name="descrizione" id="descrizione" value="submit" autocomplete="off" ngModel required></textarea>
 
     <label>COSTO</label>
     <mat-form-field floatLabel="always">
@@ -64,23 +64,23 @@ textarea {
       <span matTextPrefix>€&nbsp;</span>
     </mat-form-field>
 
-    <br>
+      <mat-form-field style="margin-left: 90px;">
+        <mat-label>Seleziona categoria</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" name="selectedCategory" id="categoria">
+          <mat-option *ngFor="let categorie of categoria" [value]="categorie.value">
+            {{ categorie.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     <br>
     
-    <p>Selezionare la categoria di merce:</p>
+    <mat-icon style="margin-right: 5px;">add_a_photo</mat-icon>
+    <input type="file" (change)="onFileSelected($event)">
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
 
-    <button mat-button type="button" (click)="onAbbDonna(inserimentoMerce)">Abbigliamento Donna</button>
-    <button mat-button type="button" style="margin-left: 30px;" (click)="onAbbUomo(inserimentoMerce)">Abbigliamento Uomo</button>
-    <button mat-button type="button" style="margin-left: 30px;" (click)="onAccessorio(inserimentoMerce)">Accessorio Telefono</button>
-    <button mat-button type="button" style="margin-left: 30px;" (click)="onPulizia(inserimentoMerce)">Pulizia Casa</button>
     <br>
-    <button mat-button type="button" (click)="onFerramenta(inserimentoMerce)">Ferramenta</button>
     <br>
     <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(inserimentoMerce)">INSERISCI</button>
-    
-
-
-    
 
   </form>
 </div>

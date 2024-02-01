@@ -1,0 +1,32 @@
+<body style="margin-left: 100px; margin-top: 50px;" *ngIf="length==true;else template">
+
+    <h1 style="font-weight: bold;">Lista Ordini</h1>
+   
+
+
+    <div *ngFor="let item of array, let j=index">
+        <ul>
+            <li>
+        <b>UID-ORDINE: </b> {{ uidOrdini[j]  }} 
+
+        <br>
+        <b> DESCRIZIONE:</b>
+        <br>
+         {{    item.prodotto   }} 
+        <br>
+        <b>TOTALE:</b> {{  item.totale }} 
+        <br>
+        <br>
+    </li>
+</ul>
+        </div>
+
+    
+
+
+</body>
+<ng-template #template >
+    <h1 style="font-weight: bold; margin-left: 400px; margin-top: 100px;opacity: 0.6;">Lista Ordini Vuota</h1> 
+    <img mat-card-image src="\assets\foto\noInvoice.png" style="width: 20%;opacity: 0.5;margin-left: 420px;">
+</ng-template>
+
