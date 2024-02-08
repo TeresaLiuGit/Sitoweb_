@@ -8,7 +8,7 @@ import { LoginComponent } from '../componenti/login/login.component';
   providedIn: 'root'
 })
 export class AuthService {
-  admin= true
+  admin:boolean | any
   urlLogin='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBiliEhIkv-rMt2e9I7v135lMTViBjkNyQ'
   urlRegistrazione='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBiliEhIkv-rMt2e9I7v135lMTViBjkNyQ'
   user: User | any
@@ -34,8 +34,12 @@ export class AuthService {
   }
 
 
-  logout(){
+  logout(valore:boolean){
+    this.admin=valore
     this.router.navigate(['/login'])
   }
 
+  setAdmin(valore:boolean){
+    this.admin=valore
+  }
 }

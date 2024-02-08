@@ -45,8 +45,9 @@ textarea {
 <body>
 
 <div>
+  <button mat-icon-button style="margin-left: 500px; position: absolute;" (click)="closeDialog()"><mat-icon>close</mat-icon></button>
+  <h2>Inserimento della Merce</h2>
 
-  <h1 style="font-weight: bold;">Inserimento della Merce</h1>
 
   <form #inserimentoMerce="ngForm" (ngSubmit)="onSubmit(inserimentoMerce)">
 
@@ -64,7 +65,7 @@ textarea {
       <span matTextPrefix>€&nbsp;</span>
     </mat-form-field>
 
-      <mat-form-field style="margin-left: 90px;">
+      <mat-form-field style="margin-left: 40px;">
         <mat-label>Seleziona categoria</mat-label>
         <mat-select [(ngModel)]="selectedCategory" name="selectedCategory" id="categoria">
           <mat-option *ngFor="let categorie of categoria" [value]="categorie.value">
@@ -80,7 +81,7 @@ textarea {
 
     <br>
     <br>
-    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(inserimentoMerce)">INSERISCI</button>
+    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(inserimentoMerce); closeDialog()">INSERISCI</button>
 
   </form>
 </div>

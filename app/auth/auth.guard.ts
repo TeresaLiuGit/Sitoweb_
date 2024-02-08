@@ -1,13 +1,20 @@
-
-import { inject } from '@angular/core';
-import { CanActivateChildFn, CanActivateFn } from '@angular/router';
-import { LoginComponent } from '../componenti/login/login.component';
+import { Injectable } from '@angular/core';
+import { CanActivateChild, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
-export const authGuard: CanActivateFn = () => {
-  return inject(LoginComponent).isAuthenticated;
-};
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivateChild {
 
-export const authGuardChild: CanActivateChildFn = () => {
-  return inject(AuthService).admin;
-};
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivateChild(): boolean {
+    if (this.authService.admin==true) {
+      return true; // Allow access to the child components
+    } else {
+      this.router.navigate(['/login']); // Redirect to login page if not admin
+      return false; // Block access to the child components
+    }
+  }
+}

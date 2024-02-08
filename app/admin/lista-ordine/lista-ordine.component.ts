@@ -8,57 +8,47 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 })
 export class ListaOrdineComponent {
   listaOrdine:[{}] | any
-  array:any
-  arrayUid:any
-  uidOrdini: any
   length:boolean | any
-  singoliOrdini:any
+  prodotti:any
+  totale=0
 
-  
+  uidOrdini: any
+  user:any
+
 constructor(private database:DatabaseService){}
 
 
-
-  ngOnInit(): void {
-      this.array=[]
-      this.arrayUid=[]
-
+    ngOnInit(): void {
+  
       this.database.getOrdine().subscribe(data=>{
       this.listaOrdine=data  //array grande
-
-
         this.uidOrdini= Object.keys(data)
 
-        for(let i in this.uidOrdini){
-          const uid= this.uidOrdini[i]
-          console.log(uid)
+
+        for(let chiave in this.listaOrdine) {
+          if(this.listaOrdine.hasOwnProperty(chiave)) {
+
+          const valori = this.listaOrdine[chiave]; 
+
+          this.prodotti= valori.prodotti
+          this.totale= valori.totale
+          this.user= valori.user
         }
+      }      
 
 
-       for(let i in this.listaOrdine){
-        console.log(this.listaOrdine[i])    //singoli ordini
-        this.singoliOrdini= this.listaOrdine[i]
-
-
-
-
-        const prodotto= this.singoliOrdini.ordine
-        const totale= this.singoliOrdini.totale
-
-
-        this.array.push({ prodotto, totale})
-
-
-
-        console.log('length:', this.array.length)
-        if(this.array.length!=0){
+        if(this.listaOrdine.length!=0){
           this.length=true
         }
         
-       }
+      })
 
+  }
 
+  onDelete(uid:string){
 
-})
-}
+      this.database.deleteOrdine(uid).subscribe(data=>{
+        console.log(data)
+      })
+  }
 }

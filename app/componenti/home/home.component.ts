@@ -33,7 +33,9 @@ export class HomeComponent{
   costo:any
   id:any
   immagine:any
-
+  loggato= this.database.loggato
+  email= this.database.user[0]
+  admin= this.authService.admin
 
   onSearch(form:NgForm){
     const prodotto= form.value.prodotto
@@ -83,12 +85,13 @@ export class HomeComponent{
     this.database.fillOrdine(uid, descrizione, costo, immagine);
     console.log('uid',uid, 'descrizione', descrizione, 'costo', costo)
     
-}
+  }
 
 
   onLogout(){
-    this.login.isAuthenticated= false
-    this.authService.logout()
+    this.login.isAuthenticated= false //per la guard
+    this.authService.logout(false)         //riporta semplicemente alla home
+    this.database.emptyUser()
   }
 
   

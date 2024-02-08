@@ -46,9 +46,9 @@ textarea {
 
 
 <div>
+  <button mat-icon-button style="margin-left: 300px; position: absolute;" (click)="closeDialog()"><mat-icon>close</mat-icon></button>
 
-  <h1 style="font-weight: bold; margin-top: 10px;">Modifica della Merce</h1>
-
+  <h1 style="font-weight: bold; ">Modifica della Merce</h1>
   <form #modificaMerce="ngForm" (ngSubmit)="onSubmit(modificaMerce)">
 
     <label>TITOLO</label>
@@ -67,7 +67,7 @@ textarea {
 
     <br>
     
-    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(modificaMerce)">MODIFICA PRODOTTO</button>
+    <button mat-raised-button type="button" style="background: linear-gradient(237deg, #005ce6,#ff0000); color: #fff" (click)="onSubmit(modificaMerce); closeDialog()">MODIFICA PRODOTTO</button>
 
 
 

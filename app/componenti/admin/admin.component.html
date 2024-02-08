@@ -50,59 +50,34 @@
       <mat-list-item role="listitem" style="margin-left: 40px;margin-top: 20px;" routerLink="/homepage">
         <h2>
           <mat-icon>home</mat-icon>
-          Home
+          <button mat-button routerLink="utenti">HOME</button>
         </h2>
       </mat-list-item>
 
-      <br>
+    
 
       <mat-list-item role="listitem" style="margin-left: 10px;">
-        <h2>
+        <h1>
           <mat-icon>person</mat-icon>
-          Gestione Utenti
-        </h2>
-        
+          <button mat-button routerLink="utenti">Gestione utenti</button>
+        </h1>
       </mat-list-item>
 
-      <mat-list-item role="listitem" style="margin-left: 25px;height: fit-content;">
-        <button mat-button routerLink="utenti">Lista</button>
-      <br>
-      </mat-list-item>
-
-  
 
       <mat-list-item role="listitem" style="margin-left: 10px;">
         <h2>
-          <mat-icon>inventory_2</mat-icon>
-          Gestione Ordini
+          <mat-icon>feed</mat-icon>
+          <button mat-button routerLink="listaOrdine">Gestione ordini</button>
         </h2>
       </mat-list-item>
 
-      <mat-list-item role="listitem" style="margin-left: 25px;height: fit-content;">
-        <button mat-button routerLink="listaOrdine">Lista</button>
-      <br>
-      </mat-list-item>
-
-
-
-
-      <br>
 
       <mat-list-item role="listitem" style="margin-left: 10px;" >
         <h2>
           <mat-icon>inventory_2</mat-icon>
-          Gestione Merce
+          <button mat-button routerLink="listaMerce">Gestione merce </button><br>
         </h2>
       </mat-list-item>
-
-      <mat-list-item role="listitem" style="margin-left: 25px;height: fit-content;">
-        
-        <button mat-button routerLink="listaMerce">Lista </button><br>
-        <button mat-button routerLink="merce">Inserisci </button><br>
-        <button mat-button routerLink="formMerce">Modifica </button><br>
-      
-      </mat-list-item>
-        
       
     </mat-list>
 

@@ -11,7 +11,7 @@ import { HomepageComponent } from './componenti/homepage/homepage.component';
 import { UtentiComponent } from './admin/utenti/utenti.component';
 import { MerceComponent } from './admin/merce/merce.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
-import { authGuard } from './auth/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { FormMerceComponent } from './admin/form-merce/form-merce.component';
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
@@ -40,20 +40,25 @@ const routes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"abbDonna", component: AbbDonnaComponent},
   {path:"abbUomo", component: AbbUomoComponent},
-  {path:"carrello", component: CarrelloComponent, canActivate:[authGuard]},  //Gli utenti possono accedere al carrello solo se autenticati
+  {path:"carrello", component: CarrelloComponent},  
   {path:"pagamento", component: PagamentoComponent},
-   //INSERIRE UNA GUARD PER PERMETTERE DI ACCEDERE AL PAGAMENTO CON ALMENO UN PRODOTTO NEL CARRELLO
   
 
-  {path:"admin", component: AdminComponent,canActivateChild:[authGuard], children:[
+  {path:"admin", component: AdminComponent,canActivateChild:[AuthGuard], children:[
     {path:"adminFace", component: AdminFaceComponent},
     {path:"utenti", component: UtentiComponent},
-    {path:"merce", component: MerceComponent},
-    {path:"formMerce", component: FormMerceComponent},
-    {path:"listaMerce", component: ListaMerceComponent},
     {path:"listaOrdine", component: ListaOrdineComponent},
+    {path:"merce", component: MerceComponent},
 
+
+    {path:"listaMerce", component: ListaMerceComponent,children:[
+      {path:"merce", component: MerceComponent},
+      {path:"formMerce", component: FormMerceComponent},
+  
+    ]},
   ]},
+
+
 
   {path:"404", component: NotFoundComponent},
   {path:"**", redirectTo: "/404"}

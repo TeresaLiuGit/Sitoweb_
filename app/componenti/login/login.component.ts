@@ -21,10 +21,10 @@ export class LoginComponent{
   listaUtente:[{}] | any
   chiave:any
   valori: any;
-  array:any
+  email:any
+  user= this.database.user
   uidAdmin='admin@admin.com'
-
-
+  emailUser:any
 
   constructor(private authservice: AuthService, private database:DatabaseService){}
   
@@ -32,36 +32,20 @@ export class LoginComponent{
     const email= form.value.email
     const password= form.value.password
 
+    this.database.setUser( email, password)
+
+    this.emailUser=this.database.user[0]
     this.authservice.signIn({email: email, password: password, returnSecureToken: true}).subscribe(data=>{
-      console.log(data)
       this.isAuthenticated=true
     })
 
 
-    this.database.getUtente().subscribe(data=>{
-      this.listaUtente=data  
-      this.array=[]
 
-      for(this.chiave in this.listaUtente) {
-            
-        if(this.listaUtente.hasOwnProperty(this.chiave)) {
-        this.valori = this.listaUtente[this.chiave]; 
-        //console.log(this.valori)
-
-        const uid: string = this.chiave;
-        const email = this.valori.email;
-        const password = this.valori.password;
-
-        // Assuming you want to store the data for each item in an array
-        this.array.push({ uid, email, password })    
-        
-        if(email===this.uidAdmin){
-          this.authservice.admin=true
-        }
-      }
-    }
+        if(this.emailUser===this.uidAdmin){
+          this.authservice.setAdmin(true)
+        }  
+    
       
-    })
     
   
     if (this.isEmailValid(email)==false) {

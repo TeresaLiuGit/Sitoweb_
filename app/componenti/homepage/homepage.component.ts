@@ -7,15 +7,4 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  constructor(private authService: AuthService){}
-
-
-  ngOnInit(): void {
-    
-  }
-
-  onLogout(){
-    this.authService.logout()
-  }
-
 }

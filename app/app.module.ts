@@ -18,8 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import {MatTableModule} from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 //COMPONENTI
@@ -36,7 +35,6 @@ import { HomepageComponent } from './componenti/homepage/homepage.component';
 import { UtentiComponent } from './admin/utenti/utenti.component';
 import { MerceComponent } from './admin/merce/merce.component';
 import { CarrelloComponent } from './componenti/carrello/carrello.component';
-import {MatRadioModule} from '@angular/material/radio';
 import { FormMerceComponent } from './admin/form-merce/form-merce.component';
 import { ListaMerceComponent } from './admin/lista-merce/lista-merce.component';
 import { PagamentoComponent } from './componenti/pagamento/pagamento.component';
@@ -48,7 +46,6 @@ import { AdminFaceComponent } from './componenti/admin-face/admin-face.component
 import { ListaOrdineComponent } from './admin/lista-ordine/lista-ordine.component';
 import { FormOrdineComponent } from './admin/form-ordine/form-ordine.component';
 import { ReusableComponent } from './componenti/reusable/reusable.component';
-
 
 @NgModule({
   declarations: [
@@ -96,10 +93,7 @@ import { ReusableComponent } from './componenti/reusable/reusable.component';
     MatInputModule,
     HttpClientModule,
     MatCardModule,
-    MatTableModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    
+    MatDialogModule    
   ],
   providers: [RegistrazioneComponent],
   bootstrap: [AppComponent]

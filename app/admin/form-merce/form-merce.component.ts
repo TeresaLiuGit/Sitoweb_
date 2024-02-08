@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DatabaseService } from 'src/app/servizi/database.service';
 
 @Component({
@@ -9,26 +10,34 @@ import { DatabaseService } from 'src/app/servizi/database.service';
 })
 export class FormMerceComponent {
 
-  urlMerce='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/merce'
-  urlAbbDonna='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/abbDonna'
-  urlAbbUomo='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/abbUomo'
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<FormMerceComponent>, private database:DatabaseService) { }
 
 
-  constructor(private database:DatabaseService){}
+  onSubmit(form: NgForm) {
+    const uidProdotto= this.data.uidProdotto
+    const reparto= this.data.reparto
 
-  onSubmit(form: NgForm){
+    var titolo= this.data.titolo
+    var descrizione= this.data.descrizione
+    var costo= this.data.costo
+    var immagine= this.data.immagine
 
-    const id= form.value.id
-    const descrizione= form.value.descrizione
-    const costo= form.value.costo
-      
-    console.log({id, descrizione, costo})
 
-    this.database.patchMerce(id, {descrizione, costo}, this.urlMerce).subscribe((data:any)=>{
+    titolo = form.value.id || titolo; // Keep the original value if form value is falsy
+    descrizione = form.value.descrizione || descrizione;
+    costo = form.value.costo ? form.value.costo.toFixed(2) : costo; // Keep the original value if form value is falsy
+    
+
+    this.database.patchMerce(uidProdotto,reparto, {uidProdotto,titolo, descrizione,costo, immagine}).subscribe((data:any)=>{
       console.log(data)
     })
-    
-      form.reset()
 
-    }
+    form.reset()
+  }
+
+
+  closeDialog(): void {
+    this.dialogRef.close(); 
+  }
+
   }

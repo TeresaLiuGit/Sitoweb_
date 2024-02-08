@@ -1,5 +1,6 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DatabaseService } from 'src/app/servizi/database.service';
 
 
@@ -30,7 +31,7 @@ export class MerceComponent {
   listaMerce:[] | any
   imageUrl: string | ArrayBuffer | null | undefined 
 
-  constructor(private database:DatabaseService){}
+  constructor(private database:DatabaseService, private dialogRef: MatDialogRef<MerceComponent>){}
 
 
   categoria: categorie[] = [
@@ -67,18 +68,22 @@ export class MerceComponent {
   onSubmit(form: NgForm){
     const titolo= form.value.id
     const descrizione= form.value.descrizione
-    const costo= form.value.costo
+    const costo= form.value.costo.toFixed(2)
     const immagine= this.imageUrl
+    const reparto= this.selectedCategory
   
-
-    this.database.insertMerce({titolo, descrizione,costo, immagine}, this.selectedCategory).subscribe(data=>{
+    this.database.insertMerce({titolo, descrizione,costo, immagine, reparto}, this.selectedCategory).subscribe(data=>{
       console.log(data)
-      })  
+    })  
           
       form.reset()
 
   }
   
+
+  closeDialog(): void {
+    this.dialogRef.close(); 
+  }
 
 
 

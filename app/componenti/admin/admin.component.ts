@@ -33,15 +33,6 @@ export class AdminComponent {
 
 
 
-    //MERCE
-
-  onDeleteMerce(){
-    const prodotto = document.getElementById('idProdotto') as HTMLInputElement
-    this.database.deleteMerce(prodotto.value).subscribe(data=>{
-      console.log(data)
-    })
-
-  }
 
 
 

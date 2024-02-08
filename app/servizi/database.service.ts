@@ -11,6 +11,9 @@ export class DatabaseService {
   url='https://webliu-dca79-default-rtdb.europe-west1.firebasedatabase.app/'
   ordine: any[] = []  //array i cui salveremo tutti gli articoli inseriti nel carrello
   risultato: any;
+  user:  any[] = []
+  loggato: boolean | any
+
 
   setRisultato(data: any) {
     this.risultato = data;
@@ -36,6 +39,18 @@ export class DatabaseService {
     return this.http.patch(this.url+'utente'+`/${id}.json`,body)
   }
 
+  setUser(email:string, password:string){
+    this.user.push(email, password)
+    console.log(this.user)
+    this.loggato=true
+  }
+
+  emptyUser(){      
+    this.user = [];
+    this.loggato= false
+  }
+
+
 
 
 
@@ -49,18 +64,18 @@ export class DatabaseService {
     return this.http.get(this.url+'merce/'+sottocategoria+'.json')
   }
 
-  deleteMerce(id: string) {
-    return this.http.delete(this.url +'merce'+ `/${id}.json`);
+  deleteMerce(uid: string, sottocategoria:string) {
+    return this.http.delete(this.url +'merce/'+sottocategoria+ `/${uid}.json`);
   }
 
-  patchMerce(id:string, body:{}, url:string){
-    return this.http.patch(this.url+'merce'+`/${id}.json`,body)
+  patchMerce(uid:string, sottocategoria:string, body:{}){
+    return this.http.patch(this.url+'merce/'+sottocategoria+`/${uid}.json`,body)
   }
 
 
 
 
-  //CARRELLO
+  //CARRELLO-ORDINI
 
   fillOrdine(uid:string, descrizione:string, costo:number, immagine:any){                       //PER INSERIRE NEL CARRELLO
     this.ordine.push([uid, descrizione, costo, immagine])
@@ -85,8 +100,8 @@ export class DatabaseService {
   }
 
   deleteOrdine( id:string){
-    console.log(this.url+'utente'+`/${id}.json`)
-    return this.http.delete(this.url+'utente'+`/${id}.json`)
+    console.log(this.url+'ordine'+`/${id}.json`)
+    return this.http.delete(this.url+'ordine'+`/${id}.json`)
   }
 
 

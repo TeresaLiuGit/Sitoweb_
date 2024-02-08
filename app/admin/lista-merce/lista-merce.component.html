@@ -1,25 +1,40 @@
-<h1 style="font-weight: bold;margin-left: 100px; margin-top: 20px;">Lista Merce</h1>
+<h1 style="font-weight: bold;margin-left: 70px; margin-top: 30px;">Lista Merce</h1>
+
+<button mat-icon-button (click)="onDialogInsert()" style="font-weight: bold;margin-left: 50px;"><mat-icon>add</mat-icon> </button>
+<b>Inserisci prodotto</b>
+
 
 
 <body style="margin-left: 50px; margin-top: 20px;" *ngIf="length==true;else template">
 
 
-<ol>
+<ul>
 
     <div *ngFor="let item of array; let i=index"> 
         <li>     
+           <b>UID-PRODOTTO</b> : {{ uids[i] }}
+           
+           <button mat-icon-button style="margin-left: 100px;" (click)="openFormDialog(uids[i], item.titolo, item.descrizione, item.costo, item.reparto, arrayImmagini[i])"><mat-icon>edit</mat-icon></button>
+           <button mat-icon-button (click)="onDelete(uids[i], item.reparto)"><mat-icon>delete</mat-icon></button>
+
+            <br>
             TITOLO: {{ item.titolo }}  
             <br>
             DESCRIZIONE: {{ item.descrizione }}        
             <br>
-            COSTO: {{ item.costo }}
+            COSTO:<span matTextPrefix>€&nbsp;</span>
+            {{ item.costo }}
             <br>
-            IMMAGINE:  {{ item.immagine}}
+            REPARTO: {{ item.reparto }}
             <br>
+            <img [src]="arrayImmagini[i]" alt="Your Image" style="width: 110px;height: 120px;">
+            <br>
+
+
         </li>
         <br>
     </div>
-</ol>
+</ul>
 
 </body>
 <ng-template #template >
